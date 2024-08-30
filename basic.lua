@@ -1,3 +1,4 @@
+local laminepath = vim.env.Lamine
 return {
     'tpope/vim-surround',
     'cloudhead/neovim-fuzzy',
@@ -38,4 +39,5 @@ return {
     -- 'neovim/nvim-lspconfig',
     -- 'tpope/vim-fugitive',
     -- 'zah/nim.vim',
+    { dir = laminepath },
 }
