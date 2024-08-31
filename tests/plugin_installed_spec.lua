@@ -1,0 +1,5 @@
+describe("lamine is installed", function()
+  it("has a version", function()
+    assert(string.match(vim.g.lamine_version, "%d+%.%d+%.%d+"))
+  end)
+end)
