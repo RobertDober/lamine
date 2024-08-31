@@ -5,4 +5,5 @@ tags
 .local
 luacov.stats.out
 tags
-luacov.report.out
+luacov.report.*
+.luacov

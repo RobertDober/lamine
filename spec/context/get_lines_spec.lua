@@ -1,11 +1,22 @@
-vim.cmd"edit tests/context/get_lines.txt"
+vim._stub_buffer{file = 'get_lines.txt'}
+
 local context = require'context'
 
 describe("current line", function()
   it("is where?", function()
-    local line = vim.api.nvim_get_current_line()
-    -- assert.is.equal("Line One", context.current_line())
+    local line = context.current_line()
     assert.is.equal("Line One", line)
+  end)
+  it("has the current char", function()
+    local char = context.current_char()
+    assert.is.equal("L", char)
+  end)
+  it("changes if we move", function()
+    vim._stub_buffer{cursor = {2, 3}}
+    local line = context.current_line()
+    assert.is.equal("Empty", line)
+    local char = context.current_char()
+    assert.is.equal("t", char)
   end)
 end)
 
