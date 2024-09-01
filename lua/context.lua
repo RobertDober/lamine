@@ -78,7 +78,7 @@ local function set_lines(f, l, data)
 end
 
 local function set_current_line(data, lnb)
-  local lnb = lnb or current_line()
+  local lnb = lnb or current_lnb()
   local data = data or {""}
   if type(data) == "string" then
     data = {data}

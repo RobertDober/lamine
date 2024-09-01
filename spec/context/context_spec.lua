@@ -48,17 +48,17 @@ describe("filetype", function()
     vim._stub_buffer{ft = "anything"}
     assert.is.equal("anything", context.filetype())
   end)
-  
+
 end)
 
 describe("set lines", function()
   it("can set the current line", function()
     context.set_current_line("New Line")
     local new_buffer = {
-"New Line",
-"Empty",
-"",
-"Line Four",
+      "New Line",
+      "Empty",
+      "",
+      "Line Four",
     }
     assert.are.same(new_buffer, vim._buffer.lines)
   end)

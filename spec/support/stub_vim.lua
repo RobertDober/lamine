@@ -37,6 +37,16 @@ function vim.api.nvim_buf_get_lines(bnr, fl, ll, flag)
   return tt.slice(vim._buffer.lines, fl + 1, ll + 1)
 end
 
+function vim.api.nvim_buf_set_lines(bnr, f, l, flag, data)
+  if bnr ~= 0 then
+    error("Only bnr 0 allowed, not " .. bnr)
+  end
+  if flag ~= false then
+    error("Only flag false allowed, not " .. flag)
+  end
+  vim._buffer.lines = tt.replace_slice(vim._buffer.lines, f+1, l, data)
+end
+
 function vim.api.nvim_win_get_cursor(x)
   if x == 0 then
     return vim._buffer.cursor
