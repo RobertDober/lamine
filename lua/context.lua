@@ -44,11 +44,12 @@ local function filetype()
 end
 
 local function lines(f, l)
-  return api.nvim_buf_get_lines(0, f - 1, l, false)
+  local result = vim.api.nvim_buf_get_lines(0, f - 1, l, false)
+  return result
 end
 
 local function line_at(lnb)
-  return lines(lnb)[1]
+  return lines(lnb, lnb+1)[1]
 end
 
 local function next_lines(offset)
@@ -57,7 +58,7 @@ local function next_lines(offset)
 end
 
 local function post_line()
-  return line_at(current_lnb() - 1)
+  return line_at(current_lnb() + 1)
 end
 
 local function pre_line()
@@ -97,10 +98,10 @@ local function current_context()
     col = col(),
     cursor = cursor(),
     dirname = dirname(),
-    file_path = api.eval('expand("%")'),
-    ft   = filetype(),
+    file_path = vim.fn.expand("%"),
+    filetype = filetype(),
     line = current_line(),
-    lnb  = current_lnb(),
+    lnb = current_lnb(),
     post_line = post_line(),
     pre_line = pre_line(),
     prefix = prefix(),
