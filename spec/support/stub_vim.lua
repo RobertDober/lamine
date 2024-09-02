@@ -7,6 +7,7 @@ local tt = require'lamine.tools.table'
 
 vim = {
   api ={},
+  cmd = nil, -- to be stubbed
   fn = {},
   g = {},
   keymap = {},
