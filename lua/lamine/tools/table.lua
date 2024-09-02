@@ -24,6 +24,10 @@ local function replace_slice(orig, fi, li, new)
 end
 
 local function slice(tbl, fi, li)
+  if fi < 0 then
+    local size = #tbl
+    return slice(tbl, size + fi + 1, size + li + 1)
+  end
   local t = {}
   for i = fi, li do
     table.insert(t, tbl[i])

@@ -4,7 +4,7 @@
 
 describe('setting keymap for editing', function()
 
-  describe('editing', function()
+  describe('normal mode editing', function()
     local shortcuts = {
       ['<Leader>='] =  "maggVG='azz",
       ['<Esc>'] =  ":set nohlsearch<CR>",
@@ -15,6 +15,8 @@ describe('setting keymap for editing', function()
       ['$$<Space>'] =  ':w!<cr>',
       ['$$i'] = '<C-a>',
       ['$$d'] = '<C-x>',
+      ['$$e'] = '<C-r>',
+      ['$$t'] = '<C-t>',
     }
     for shortcut, nav_cmd in pairs(shortcuts) do
       it(shortcut .. " has the correct " .. nav_cmd, function()

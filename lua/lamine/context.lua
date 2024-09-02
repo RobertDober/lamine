@@ -44,12 +44,14 @@ local function filetype()
 end
 
 local function lines(f, l)
-  local result = vim.api.nvim_buf_get_lines(0, f - 1, l, false)
-  return result
+  return vim.api.nvim_buf_get_lines(0, f - 1, l, false)
 end
 
 local function line_at(lnb)
-  return lines(lnb, lnb+1)[1]
+  if lnb > 0 then
+    return lines(lnb, lnb+1)[1]
+  end
+  return lines(lnb, lnb)[1]
 end
 
 local function next_lines(offset)

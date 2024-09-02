@@ -33,6 +33,15 @@ describe("current line", function()
   end)
 end)
 
+describe('line_at', function()
+  it('can get the first line explicitly', function()
+    assert.is.equal('Line One', context.line_at(1)) 
+  end)
+  it('can get the last line', function()
+    assert.is.equal('Line Four', context.line_at(-1)) 
+  end)
+end)
+
 describe("current context", function()
   it("#wip has some values", function()
     expected = {char="L", line="Line One", lnb=1, post_line="Empty"}
