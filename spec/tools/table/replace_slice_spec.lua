@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local replace = require'tools.table'.replace_slice
+local replace = require'lamine.tools.table'.replace_slice
 local source = {1, 2, 3}
 describe("replace_slice", function()
   it("into empty", function()

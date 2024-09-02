@@ -3,5 +3,5 @@
 
 package.path = package.path .. ";./lua/?.lua;./spec/support/?.lua"
 require'stub_vim'
-require'lamine'
+require'lamine.lamine'
 -- SPDX-License-Identifier: AGPL-3.0-or-later

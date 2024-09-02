@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-require 'lamine'
+require 'lamine.lamine'
 describe('global information', function()
   it("has a correctly formatted version", function()
     assert(string.match(vim.g.lamine_version, "%d+%.%d+%.%d+"))

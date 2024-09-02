@@ -5,7 +5,7 @@ return {
   'morhetz/gruvbox',
   'preservim/nerdtree',
   -- { 'echasnovski/mini.test', version = '*' },
-  {"nvim-lua/plenary.nvim", lazy=false},
+  {"nvim-lua/plenary.nvim", lazy=true},
   -- {
   --   "nvim-neo-tree/neo-tree.nvim",
   --   branch = "v3.x",

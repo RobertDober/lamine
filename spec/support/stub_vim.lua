@@ -1,23 +1,30 @@
--- -- local dbg = require("debugger")
--- -- dbg.auto_where = 2
+-- local dbg = require("debugger")
+-- dbg.auto_where = 2
 
+require'stub_os'
 local fix = require'fixtures'
 local fni = require'fn_implementation'
-local tt = require'tools.table'
+local tt = require'lamine.tools.table'
 
 vim = {
-  api ={
-  },
-  fn = {
-  },
-  g = {
-  },
+  api ={},
+  fn = {},
+  g = {},
+  keymap = {},
+  keymaps = {
+    _all={},
+    c={},
+    i={},
+    n={},
+    v={},
+   },
   o = {
     ft = "",
     filetype = "",
   },
   print = print,
   _buffer = {
+    lines = {},
   },
 }
 
@@ -52,6 +59,10 @@ function vim.api.nvim_win_get_cursor(x)
     return vim._buffer.cursor
   end
   error("Only window 0 supported") 
+end
+ 
+function vim.keymap.set(typ, keys, fn, options) 
+  vim.keymaps[typ][keys] = fn
 end
 
 function vim._stub_buffer(from)

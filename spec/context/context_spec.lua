@@ -1,8 +1,8 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local context = require'context'
-local tt = require'tools.table'
+local context = require'lamine.context'
+local tt = require'lamine.tools.table'
 
 local cc = nil
 
