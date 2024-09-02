@@ -1,7 +1,6 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-require'stub_os'
 local fix = require'fixtures'
 local fni = require'fn_implementation'
 local tt = require'lamine.tools.table'

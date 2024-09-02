@@ -3,7 +3,11 @@
 
 describe("setting all keymaps for tmux", function()
   setup(function()
+    stub(os, "execute")
     require'lamine.keymaps.tmux'
+  end)
+  teardown(function()
+    os.execute:revert()
   end)
 
   local shortcuts = {
@@ -14,7 +18,7 @@ describe("setting all keymaps for tmux", function()
   for shortcut, selection_target in pairs(shortcuts) do
     it(shortcut .. " has the correct " .. selection_target, function()
       vim.keymaps.n[shortcut]()
-      assert.is.equal("tmux select-window -t " .. selection_target, os.executed())
+      assert.stub(os.execute).was.called_with("tmux select-window -t " .. selection_target)
     end)
   end
     
