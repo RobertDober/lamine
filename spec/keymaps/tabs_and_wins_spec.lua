@@ -10,6 +10,7 @@ describe('setting normal keymap for tabs and wins', function()
       ['<Space>k'] = '<C-W>k',
       ['<Space>j'] = '<C-W>j',
       ['<Space>q'] = ':q<cr>',
+      ['$$!!'] = ':q!<cr>',
     }
     for shortcut, win_cmd in pairs(shortcuts) do
       it(shortcut .. " has the correct " .. win_cmd, function()

@@ -15,5 +15,6 @@ vim.keymap.set('n', '<Space>l', '<C-W>l')
 vim.keymap.set('n', '<Space>k', '<C-W>k')
 vim.keymap.set('n', '<Space>j', '<C-W>j')
 vim.keymap.set('n', '<Space>q', ':q<cr>')
+vim.keymap.set('n', '$$!!', ':q!<cr>')
 
 -- SPDX-License-Identifier: AGPL-3.0-or-later
