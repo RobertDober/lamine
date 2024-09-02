@@ -1,8 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-
-describe('setting noraml keymap for tabs and wins', function()
+describe('setting normal keymap for tabs and wins', function()
 
   describe('win navigation', function()
     local shortcuts = {
