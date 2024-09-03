@@ -30,6 +30,19 @@ vim = {
 
 vim.fn.expand = fni.expand(vim)
 
+local function _adapt_cursor()
+  local l, c = table.unpack(vim._buffer.cursor or {1, 0})
+  local nl, nc = l, c
+  if #vim._buffer.lines < l then
+    nl = #vim._buffer.lines
+  end
+  local line = vim._buffer.lines[nl]
+  if #line < nc then
+    nc = #line - 1
+  end
+  vim._buffer.cursor = {nl, nc}
+end
+
 function vim.api.nvim_get_current_line()
   return vim._buffer.lines[vim._buffer.cursor[1]]
 end
@@ -56,6 +69,7 @@ function vim.api.nvim_buf_set_lines(bnr, f, l, flag, data)
   else
     vim._buffer.lines = tt.replace_slice(vim._buffer.lines, f+1, l, data)
   end
+  _adapt_cursor()
 end
 
 function vim.api.nvim_win_get_cursor(x)
