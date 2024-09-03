@@ -76,6 +76,10 @@ local function relpath()
 end
 
 local function set_lines(f, l, data)
+  local data = data
+  if type(data) == "string" then
+    data = { data }
+  end
   return vim.api.nvim_buf_set_lines(0, f - 1, l, false, data)
 end
 

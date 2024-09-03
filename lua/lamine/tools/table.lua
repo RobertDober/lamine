@@ -9,14 +9,27 @@ local function projection(source, model)
   return t
 end
 
+local function  _adapt_index(tbl, idx)
+  if idx >= 0 then
+    return idx
+  end
+  local len = #tbl
+  return len + idx + 1
+end
+
 local function replace_slice(orig, fi, li, new)
+  local fi = _adapt_index(orig, fi)
+  local li = _adapt_index(orig, li)
+
   local t = {}
   for i = 1, fi - 1 do
     table.insert(t, orig[i])
   end
+
   for _, value in ipairs(new) do
     table.insert(t, value)
   end
+
   for i = li + 1, #orig do
     table.insert(t, orig[i])
   end
