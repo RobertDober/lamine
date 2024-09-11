@@ -2,12 +2,12 @@
 -- dbg.auto_where = 2
 
 local keys = {
-  ['<Leader><Space>'] = '<Esc>',
-  ['<Leader>r'] = '<C-r>',
-  ['<Leader>c'] = '<C-c>',
-  ['<Leader>p'] = '<C-p>',
-  ['<Leader>:'] = '\\',
-  ['<Leader>n'] = '~',
+  [';<Space>'] = '<Esc>',
+  [';r'] = '<C-r>',
+  [';c'] = '<C-c>',
+  [';p'] = '<C-p>',
+  [';:'] = '\\',
+  [';n'] = '~',
   ['$$<Space>'] = '<Esc>:w!<Cr>',
 }
 

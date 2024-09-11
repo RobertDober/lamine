@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-vim.keymap.set('n', '<Leader>=', "maggVG='azz", {})
+vim.keymap.set('n', ';=', "maggVG='azz", {})
 vim.keymap.set('n', '<Esc>', ":set nohlsearch<CR>", {})
 
 vim.keymap.set('n', '=', "A", {})

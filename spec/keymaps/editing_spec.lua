@@ -6,7 +6,7 @@ describe('setting keymap for editing', function()
 
   describe('normal mode editing', function()
     local shortcuts = {
-      ['<Leader>='] =  "maggVG='azz",
+      [';='] =  "maggVG='azz",
       ['<Esc>'] =  ":set nohlsearch<CR>",
       ['='] =  "A",
       ['$$l'] =  '<<',
