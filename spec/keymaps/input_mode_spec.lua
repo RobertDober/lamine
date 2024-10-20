@@ -3,18 +3,24 @@
 
 describe('input mode keymappings', function()
   local shortcuts = {
-    [';<Space>'] = '<Esc>',
-    [';r'] = '<C-r>',
-    [';c'] = '<C-c>',
-    [';p'] = '<C-p>',
-    [';:'] = '\\',
-    [';n'] = '~',
-    ['$$<Space>'] = '<Esc>:w!<Cr>',
+    ['<Leader><Space>'] = '<Esc>',
+    ['<Leader>r'] = '<C-r>',
+    ['<Leader>c'] = '<C-c>',
+    ['<Leader>p'] = '<C-p>',
+    ['<Leader>:'] = '\\',
+    ['<Leader>n'] = '~',
+    ['$<Space>'] = '<Esc>:w!<Cr>',
+    ['$-'] =  '<Esc>:wqa<cr>',
+    ['$!!'] =  '<Esc>:qa!<cr>',
+    ['=('] = '{',
+    ['=)'] = '}',
+    [':)'] = ']',
+    [':('] = ']',
   }
 
   for shortcut, mapping in pairs(shortcuts) do
     it(shortcut .. ' in input mode is mapped to ' .. mapping, function()
-      assert.is.equal(vim.keymaps.i[shortcut], mapping)
+      assert.is.equal(mapping, vim.keymaps.i[shortcut])
     end)
   end
 end)

@@ -9,37 +9,26 @@ describe('setting keymap for editing', function()
       [';='] =  "maggVG='azz",
       ['<Esc>'] =  ":set nohlsearch<CR>",
       ['='] =  "A",
-      ['$$l'] =  '<<',
-      ['$$r'] =  '>>',
-      ['$$-'] =  ':wqa<cr>',
-      ['$$<Space>'] =  ':w!<cr>',
-      ['$$i'] = '<C-a>',
-      ['$$d'] = '<C-x>',
-      ['$$e'] = '<C-r>',
-      ['$$t'] = '<C-t>',
+      ['$l'] =  '<<',
+      ['$r'] =  '>>',
+      ['$-'] =  ':wqa<cr>',
+      ['$<Space>'] =  ':w!<cr>',
+      ['$i'] = '<C-a>',
+      ['$d'] = '<C-x>',
+      ['$e'] = '<C-r>',
+      ['$t'] = '<C-t>',
+      ['$!!'] = ':qa!<cr>', 
     }
     for shortcut, nav_cmd in pairs(shortcuts) do
       it(shortcut .. " has the correct " .. nav_cmd, function()
-        assert.is.equal(vim.keymaps.n[shortcut], nav_cmd)
-      end)
-    end
-  end)
-
-  describe('exiting from input mode', function()
-    local shortcuts = {
-      ['$$-'] =  '<Esc>:wqa<cr>',
-      ['$$!!'] =  '<Esc>:qa!<cr>',
-    }
-    
-    for shortcut, exit_cmd in pairs(shortcuts) do
-      it(shortcut .. " has the correct " .. exit_cmd, function()
-        assert.is.equal(vim.keymaps.i[shortcut], exit_cmd)
+        assert.is.equal(nav_cmd, vim.keymaps.n[shortcut])
       end)
     end
   end)
 
   it('also has the command mode shortcut to exit', function()
-        assert.is.equal(vim.keymaps.c['$$-'], 'wqa<cr>')
+        assert.is.equal(vim.keymaps.c['$-'], 'wqa<cr>')
+        assert.is.equal(vim.keymaps.c['$!!'], 'qa!<cr>')
   end)
 end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

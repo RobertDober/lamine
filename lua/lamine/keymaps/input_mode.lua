@@ -2,13 +2,19 @@
 -- dbg.auto_where = 2
 
 local keys = {
-  [';<Space>'] = '<Esc>',
-  [';r'] = '<C-r>',
-  [';c'] = '<C-c>',
-  [';p'] = '<C-p>',
-  [';:'] = '\\',
-  [';n'] = '~',
-  ['$$<Space>'] = '<Esc>:w!<Cr>',
+  ['<Leader><Space>'] = '<Esc>',
+  ['<Leader>r'] = '<C-r>',
+  ['<Leader>c'] = '<C-c>',
+  ['<Leader>p'] = '<C-p>',
+  ['<Leader>:'] = '\\',
+  ['<Leader>n'] = '~',
+  ['$<Space>'] = '<Esc>:w!<Cr>',
+  ['$-'] = '<Esc>:wqa<cr>',
+  ['$!!'] = '<Esc>:qa!<cr>',
+  ['=('] = '{',
+  ['=)'] = '}',
+  [':)'] = ']',
+  [':('] = ']',
 }
 
 for shortcut, mapping in pairs(keys) do
