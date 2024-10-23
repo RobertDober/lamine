@@ -1,6 +1,17 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local function append(...)
+  local tables = {...}
+  local result = {}
+  for _, t in ipairs(tables) do
+    for _, e in ipairs(t) do
+      table.insert(result, e)
+    end
+  end
+  return result
+end
+
 local function projection(source, model)
   local t = {}
   for k, _v in pairs(model) do
@@ -49,6 +60,7 @@ local function slice(tbl, fi, li)
 end
 
 return {
+  append = append,
   projection = projection,
   replace_slice = replace_slice,
   slice = slice,

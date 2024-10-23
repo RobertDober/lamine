@@ -16,6 +16,7 @@ describe('input mode keymappings', function()
     ['=)'] = '}',
     [':)'] = ']',
     [':('] = ']',
+    ['-a'] = '<Esc>A',
   }
 
   for shortcut, mapping in pairs(shortcuts) do

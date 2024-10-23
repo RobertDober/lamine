@@ -2,6 +2,7 @@
 -- dbg.auto_where = 2
 
 local predefined = {
+  add = function(a, b) return a + b end,
   id = function(...) return unpack({...}) end,
   minus = function(a, b) return a - b end,
 }

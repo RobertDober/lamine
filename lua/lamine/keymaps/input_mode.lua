@@ -15,9 +15,17 @@ local keys = {
   ['=)'] = '}',
   [':)'] = ']',
   [':('] = ']',
+  ['-a'] = '<Esc>A',
 }
 
 for shortcut, mapping in pairs(keys) do
   vim.keymap.set('i', shortcut, mapping, {})
 end
+
+local function ctrl_p_completion()
+  local key = vim.api.nvim_replace_termcodes('<ctrl-p>', true, false, true)
+  vim.api.nvim_feedkeys(key, 'i', false)
+end
+
+-- vim.keymap.set('i', '-p', ctrl_p_completion, {})
 -- SPDX-License-Identifier: AGPL-3.0-or-later

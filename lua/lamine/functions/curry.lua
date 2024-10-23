@@ -1,6 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local assure_function = require'lamine.functions'.assure_function
 local ph = function() end
 local _ = ph
 
@@ -25,7 +26,7 @@ local function curry(fun, ...)
   return function(...)
     local current = {...}
     local all = combine(predefined, current)
-    return fun(table.unpack(all))
+    return assure_function(fun)(table.unpack(all))
   end
 end
 
