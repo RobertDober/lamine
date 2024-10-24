@@ -23,9 +23,9 @@ for shortcut, mapping in pairs(keys) do
 end
 
 local function ctrl_p_completion()
-  local key = vim.api.nvim_replace_termcodes('<ctrl-p>', true, false, true)
+  local key = vim.api.nvim_replace_termcodes('<c-p>', true, false, true)
   vim.api.nvim_feedkeys(key, 'i', false)
 end
 
--- vim.keymap.set('i', '-p', ctrl_p_completion, {})
+vim.keymap.set('i', '-p', ctrl_p_completion, {})
 -- SPDX-License-Identifier: AGPL-3.0-or-later

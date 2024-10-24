@@ -2,12 +2,16 @@
 -- dbg.auto_where = 2
 
 local fix = require'fixtures'
+local fk = require'fk_implementation'
 local fni = require'fn_implementation'
+
 local tt = require'lamine.tools.table'
 
 vim = {
   api ={},
   cmd = nil, -- to be stubbed
+  commands = {},
+  fed_keys = {},
   fn = {},
   g = {},
   keymap = {},
@@ -28,6 +32,8 @@ vim = {
   },
 }
 
+vim.api.nvim_feedkeys = fk.feedkeys
+vim.api.nvim_replace_termcodes = fk.replace_termcodes
 vim.fn.expand = fni.expand(vim)
 
 local function _adapt_cursor()
@@ -77,6 +83,10 @@ function vim.api.nvim_win_get_cursor(x)
     return vim._buffer.cursor
   end
   error("Only window 0 supported") 
+end
+
+function vim.cmd(command_string)
+  table.insert(vim.commands, command_string)
 end
 
 function vim.keymap.set(typ, keys, fn, options) 
