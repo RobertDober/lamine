@@ -1,6 +1,8 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+
+local api = require'lamine.api'
 local context = require'lamine.context'
 local tt = require'lamine.tools.table'
 
@@ -51,11 +53,11 @@ end)
 
 describe("filetype", function()
   it("is empty as for any new buffer", function()
-    assert.is.equal("", context.filetype())
+    assert.is.equal("", api.filetype())
   end)
   it("can be accessed for a bffer", function()
     vim._stub_buffer{ft = "anything"}
-    assert.is.equal("anything", context.filetype())
+    assert.is.equal("anything", api.filetype())
   end)
 
 end)

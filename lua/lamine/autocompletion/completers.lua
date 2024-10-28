@@ -10,7 +10,7 @@ local function replace_suffix_and_add_lines(params)
   local suffix = params.suffix or ""
   return function(matches, ctxt)
     local line = string.gsub(ctxt.line, matches[3], suffix)
-    local lines = F.map(lines, S.prefix_with(matches[2])
+    local lines = F.map(lines, S.prefix_with(matches[2]))
     lines = T.append({line}, lines)
     return {lines=lines, ctxt=ctxt}
   end
