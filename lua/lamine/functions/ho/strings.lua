@@ -1,9 +1,15 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local function match_with(pattern)
-  return function(subject) 
-    return string.match(subject, pattern)
+local function match_with(pattern, all)
+  if all then
+    return function(subject) 
+      return string.match(subject, pattern)
+    end
+  else
+    return function(subject) 
+      return {string.match(subject, pattern)}
+    end
   end
 end
 

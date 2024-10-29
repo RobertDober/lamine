@@ -28,6 +28,32 @@ local function  _adapt_index(tbl, idx)
   return len + idx + 1
 end
 
+local function combine(tbl1, tbl2, fun, context)
+  local t = {}
+  for i = 1, #tbl1 do
+    -- vim.print{i=i, t=t}
+    local result = fun(tbl1[i], tbl2[i], context)
+    table.insert(t, result)
+  end
+  return t
+end
+
+local function get(subject, idx)
+  return subject[_adapt_index(subject, idx)]
+end
+
+local function join(tbl, with)
+  local with = with or ''
+  local r = tbl[1] 
+  if not r then
+    return ''
+  end
+  for i = 2, #tbl do
+    r = r .. with .. tbl[i]
+  end
+  return r
+end
+
 local function replace_slice(orig, fi, li, new)
   local fi = _adapt_index(orig, fi)
   local li = _adapt_index(orig, li)
@@ -61,6 +87,9 @@ end
 
 return {
   append = append,
+  combine = combine,
+  get = get,
+  join = join,
   projection = projection,
   replace_slice = replace_slice,
   slice = slice,

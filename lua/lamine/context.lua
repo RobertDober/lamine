@@ -67,7 +67,6 @@ end
 local context_functions = {
   col = col,
   current_char = current_char,
-  current_context = current_context,
   current_line = current_line,
   current_lnb = current_lnb,
   line_at = line_at,
@@ -102,5 +101,6 @@ local function current_context()
   return ctxt
 end
 
+context_functions.current_context = current_context
 return context_functions
 -- SPDX-License-Identifier: AGPL-3.0-or-later

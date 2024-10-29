@@ -2,6 +2,7 @@
 -- dbg.auto_where = 2
 
 local completers = require'lamine.autocompletion.completers'
+local context = require'lamine.context'
 local api = require'lamine.api'
 local find_value = require'lamine.functional'.find_value
 
@@ -32,8 +33,10 @@ local function find_match_and_complete(ctxt)
   return function(entry)
     local pattern = entry[1]
     local handler = entry[2]
-    local matches = string.match(ctxt.line, pattern)
-    if matches then
+    -- vim.print{l=ctxt.line, p=pattern}
+    local matches = {string.match(ctxt.line, pattern)}
+    -- vim.print(matches)
+    if matches  and #matches > 0 then
       return handler(matches, ctxt)
     end
   end

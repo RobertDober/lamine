@@ -52,6 +52,7 @@ return {
   filetype = filetype,
   lines = lines,
   relpath = relpath,
+  set_cursor = set_cursor,
   set_lines = set_lines,
 }
 -- SPDX-License-Identifier: AGPL-3.0-or-later

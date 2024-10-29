@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
-vim.g.lamine_version="0.0.0"
-vim.g.lamine_date="2024-08-30"
+vim.g.lamine_version="0.0.1"
+vim.g.lamine_date="2024-10-28"
 
 require'lamine.keymaps'
 require'lamine.commands'

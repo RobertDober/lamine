@@ -7,7 +7,6 @@ local function at(n)
   end
 end
 
-
 return {
   at = at,
   first = at(1),
