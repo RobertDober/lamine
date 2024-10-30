@@ -21,7 +21,7 @@ local function match_elements(...)
   local elements = {...}
   return function(matches)
     -- T.join(F.map(elements, C.curry(_apply, C._, matches)))
-    T.join(F.map(elements, function(element) 
+    return T.join(F.map(elements, function(element) 
       return _apply(element, matches)
     end))
   end
@@ -37,9 +37,10 @@ end
 local function replace_matches(replacers)
   return function(matches, ctxt)
     -- vim.print(matches)
-    local lines = T.combine(matches, replacers, _maybe_replace_with, matches)
+    local line = T.combine(matches, replacers, _maybe_replace_with, matches)
     -- vim.print(lines)
-    return {lines={T.join(lines)}, ctxt=ctxt}
+    line = T.join(line)
+    return {lines={line}, offset={0, 999}, ctxt=ctxt}
   end
 end
 

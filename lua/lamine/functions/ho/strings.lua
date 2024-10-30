@@ -4,11 +4,11 @@
 local function match_with(pattern, all)
   if all then
     return function(subject) 
-      return string.match(subject, pattern)
+      return {string.match(subject, pattern)}
     end
   else
     return function(subject) 
-      return {string.match(subject, pattern)}
+      return string.match(subject, pattern)
     end
   end
 end
