@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-
+local autocomplete = require'lamine.autocompletion'.autocomplete
 describe('setting keymap for editing', function()
 
   describe('normal mode editing', function()
@@ -27,8 +27,13 @@ describe('setting keymap for editing', function()
   end)
 
   it('also has the command mode shortcut to exit', function()
-        assert.is.equal(vim.keymaps.c['$-'], 'wqa<cr>')
-        assert.is.equal(vim.keymaps.c['$!!'], 'qa!<cr>')
+    assert.is.equal(vim.keymaps.c['$-'], 'wqa<cr>')
+    assert.is.equal(vim.keymaps.c['$!!'], 'qa!<cr>')
   end)
+
+  it('can go to autocomplete', function()
+    assert.is.equal(autocomplete, vim.keymaps.n[',,'])
+  end)
+
 end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

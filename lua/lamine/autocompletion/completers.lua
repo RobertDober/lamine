@@ -49,11 +49,11 @@ local function replace_suffix_and_add_lines(params)
   local suffix = params.suffix or ""
   return function(matches, ctxt)
     local index = #matches
-    vim.print(matches)
+    -- vim.print(matches)
     local line = string.gsub(ctxt.line, matches[index], suffix)
     local lines = F.map(lines, S.prefix_with(matches[1]))
     lines = T.append({line}, lines)
-    return {lines=lines, ctxt=ctxt}
+    return {lines=lines, offset={0, 999}, ctxt=ctxt}
   end
 end
 

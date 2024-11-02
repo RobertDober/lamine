@@ -54,6 +54,7 @@ end
 
 local function find_completion(ctxt)
   local found = find_ft_completion(ctxt)
+  
   if found then
     return found
   end

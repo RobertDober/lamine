@@ -18,6 +18,11 @@ describe('completions found for lua', function()
     assert.are.same({'  local different = require"something.completely".different'}, result.lines)
     assert.are.same({0, 999}, result.offset)
   end)
+  it('and a simpler one, later', function()
+    local result = fc(context('  local req'))
+    assert.are.same({"  local require'"}, result.lines)
+    assert.are.same({0, 999}, result.offset)
+  end)
   
 end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later
