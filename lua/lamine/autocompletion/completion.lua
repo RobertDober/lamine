@@ -7,11 +7,8 @@ local api = require'lamine.api'
 local find_value = require'lamine.functional'.find_value
 
 local ft_completions = {
-  ruby = {
-    {"^(%s*)case.*(%s*)$", nil}, 
-
-  },
   lua = require'lamine.autocompletion.completions.lua',
+  ruby = require'lamine.autocompletion.completions.ruby',
 }
 
 local function complete_with(completion)
@@ -22,7 +19,10 @@ local function complete_with(completion)
   local offset = completion.offset or {0, 999}
 
   api.set_lines(ctxt.lnb, ctxt.lnb + count - 1, lines)
-  api.set_cursor(ctxt.fn.relative_offset(offset))
+  vim.print{before=offset}
+  offset = ctxt.fn.relative_offset(offset)
+  vim.print{after=offset}
+  api.set_cursor(offset)
 end
 
 local function find_general_completion(ctxt)
@@ -33,10 +33,8 @@ local function find_match_and_complete(ctxt)
   return function(entry)
     local pattern = entry[1]
     local handler = entry[2]
-    -- vim.print{l=ctxt.line, p=pattern}
     local matches = {string.match(ctxt.line, pattern)}
-    -- vim.print(matches)
-    if matches  and #matches > 0 then
+    if matches and #matches > 0 then
       return handler(matches, ctxt)
     end
   end

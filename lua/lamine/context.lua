@@ -74,7 +74,7 @@ local context_functions = {
   post_line = post_line,
   pre_line = pre_line,
   prefix = prefix,
-  relative_offset  = relative_offset,
+  relative_offset = relative_offset,
   set_current_line = set_current_line,
   suffix = suffix,
 }

@@ -3,6 +3,7 @@
 
 describe("setting all keymaps for tmux", function()
   setup(function()
+    vim.commands = {}
     stub(os, "execute")
   end)
   teardown(function()
@@ -30,9 +31,15 @@ describe("setting all keymaps for tmux", function()
     end)
   end
 
-  it('navigates to the lasst window', function()
+  it('navigates to the last window', function()
     vim.keymaps.n['<space>ta']()
-      assert.stub(os.execute).was.called_with("tmux select-window -l")
+    assert.stub(os.execute).was.called_with("tmux select-window -l")
+  end)
+
+  it('reruns the commands in the last window', function()
+    vim.keymaps.n['<space>taa']()
+    assert.stub(os.execute).was.called_with('tmux send-keys -t {last} "Up" C-m && tmux select-window -t {last}')
+    assert.are.same({'write!'}, vim.commands)
   end)
 
 end)

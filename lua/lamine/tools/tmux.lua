@@ -24,9 +24,10 @@ end
 
 local function send_and_select_tmux_window(params)
   -- vim.cmd('echomsg "' .. params.window .. '"')
-  send_keys('tmux send-keys -t ' .. params.window .. ' "' .. params.command .. '" C-m')
+  local command = 'tmux send-keys -t ' .. params.window .. ' "' .. params.command .. '" C-m'
   if params.switch then
-    select_tmux_window(params.window)
+    command = command .. ' && tmux select-window -t ' .. params.window
+    os.execute(command)
   end
 end
 
@@ -42,7 +43,8 @@ end
 local function switch_to_window(winaddr)
   local compiled = compile_winaddr(winaddr)
   local command = 'tmux select-window' .. compiled
-  -- p('command to be executed', command)
+  -- vim.print{['command to be executed'] =  command}
+
   return os.execute(command)
 end
 

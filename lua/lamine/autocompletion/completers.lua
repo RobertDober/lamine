@@ -44,16 +44,31 @@ local function replace_matches(replacers)
   end
 end
 
+-- local function _make_offset(offset, line)
+--   if offset then
+--     if type(offset) == 'table' then
+--       error("table not yet implemented")
+--     elseif offset > 0 then 
+--       return {0, offset}
+--     else
+--       return {0, #line + offset}
+--     end
+--   else
+--     return {0, 999}
+--   end
+-- end
+
 local function replace_suffix_and_add_lines(params)
   local lines = params.lines or error("keyword lines missing")
   local suffix = params.suffix or ""
+  local offset = params.offset or {0, 999}
   return function(matches, ctxt)
     local index = #matches
     -- vim.print(matches)
     local line = string.gsub(ctxt.line, matches[index], suffix)
     local lines = F.map(lines, S.prefix_with(matches[1]))
     lines = T.append({line}, lines)
-    return {lines=lines, offset={0, 999}, ctxt=ctxt}
+    return {lines=lines, offset=offset, ctxt=ctxt}
   end
 end
 
