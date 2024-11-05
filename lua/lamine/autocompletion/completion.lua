@@ -14,12 +14,12 @@ local ft_completions = {
 
 local function complete_with(completion)
   local continue = completion.contiue and error("must not used reserved param continue=, **yet**")
-  local count = completion.count or 1
+  local range = completion.range or {0, 0} 
   local ctxt = completion.ctxt or context.current_context()
   local lines = completion.lines or error("missing param lines=")
   local offset = completion.offset or {0, 999}
 
-  api.set_lines(ctxt.lnb, ctxt.lnb + count - 1, lines)
+  api.set_lines(ctxt.lnb + range[1], ctxt.lnb + range[2], lines)
   vim.print{before=offset}
   offset = ctxt.fn.relative_offset(offset)
   vim.print{after=offset}

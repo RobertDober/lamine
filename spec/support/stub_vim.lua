@@ -6,6 +6,7 @@ local fk = require'fk_implementation'
 local fni = require'fn_implementation'
 
 local tt = require'lamine.tools.table'
+local dump = require'pl.pretty'.dump
 
 vim = {
   api ={},
@@ -26,11 +27,14 @@ vim = {
     ft = "",
     filetype = "",
   },
-  print = print,
   _buffer = {
     lines = {},
   },
 }
+vim.print = function(arg)
+  dump(arg)
+  return arg
+end
 
 vim.api.nvim_feedkeys = fk.feedkeys
 vim.api.nvim_replace_termcodes = fk.replace_termcodes

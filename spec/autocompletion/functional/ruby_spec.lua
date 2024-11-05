@@ -27,11 +27,21 @@ describe('completions found for ruby', function()
     end)
   end)
 
-  describe('case', function()
-    it('inserts lines, not changing first', function()
+  describe('case and def', function()
+    it('inserts lines for case, not changing first', function()
       local result = fc(context('  case some_function()'))
       local expected = {
         '  case some_function()',
+        '    ',
+        '  end'
+      }
+      assert.are.same(expected, result.lines)
+      assert.are.same({1, 999}, result.offset)
+    end)
+    it('inserts lines for def, not changing first', function()
+      local result = fc(context('  def some_function()'))
+      local expected = {
+        '  def some_function()',
         '    ',
         '  end'
       }
