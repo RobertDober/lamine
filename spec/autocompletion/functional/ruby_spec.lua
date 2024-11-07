@@ -18,12 +18,14 @@ describe('completions found for ruby', function()
       local result = fc(context('some string "is@@@'))
       assert.are.same({'some string "is#{}'}, result.lines)
       assert.are.same({0, -1}, result.offset)
+      assert.are.same({0, 999}, result.continue)
     end)
 
     it('replaces @@@ inside a string', function()
       local result = fc(context('in @@@ the middle'))
       assert.are.same({'in #{} the middle'}, result.lines)
       assert.are.same({0, -1}, result.offset)
+      assert.are.same({0, 999}, result.continue)
     end)
   end)
 
@@ -47,6 +49,7 @@ describe('completions found for ruby', function()
       }
       assert.are.same(expected, result.lines)
       assert.are.same({1, 999}, result.offset)
+      assert.is_nil(result.continue)
     end)
   end)
 

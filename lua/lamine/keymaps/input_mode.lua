@@ -1,10 +1,12 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local autocomplete = require'lamine.autocompletion'.autocomplete
+local A = require'lamine.autocompletion'
 
 local keys = {
   ['<Leader><Space>'] = '<Esc>',
+  ['<Leader>='] = '<Esc>A',
+  ['<Leader>$'] = '<Esc>$',
   ['<Leader>r'] = '<C-r>',
   ['<Leader>c'] = '<C-c>',
   ['<Leader>p'] = '<C-p>',
@@ -31,5 +33,6 @@ end
 
 vim.keymap.set('i', '-p', ctrl_p_completion, {})
 
-vim.keymap.set('i', ',,', autocomplete, {})
+vim.keymap.set('i', ',,', A.autocomplete, {})
+vim.keymap.set('i', ',;', A.autocontinue, {})
 -- SPDX-License-Identifier: AGPL-3.0-or-later

@@ -12,18 +12,28 @@ local ft_completions = {
   ruby = require'lamine.autocompletion.completions.ruby',
 }
 
+local function set_continuation(continue)
+  if continue then
+    local continuations = vim.b.autocontinuations or {}
+    table.insert(continuations, continue)
+    vim.b.autocontinuations = continuations
+  end
+end
+
 local function complete_with(completion)
   local continue = completion.contiue and error("must not used reserved param continue=, **yet**")
   local range = completion.range or {0, 0} 
   local ctxt = completion.ctxt or context.current_context()
   local lines = completion.lines or error("missing param lines=")
   local offset = completion.offset or {0, 999}
+  local continue = completion.continue
 
   api.set_lines(ctxt.lnb + range[1], ctxt.lnb + range[2], lines)
-  vim.print{before=offset}
+  -- vim.print{before=offset}
   offset = ctxt.fn.relative_offset(offset)
-  vim.print{after=offset}
+  -- vim.print{after=offset}
   api.set_cursor(offset)
+  set_continuation(continue)
 end
 
 local function find_general_completion(ctxt)

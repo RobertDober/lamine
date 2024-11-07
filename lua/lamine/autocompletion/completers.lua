@@ -58,7 +58,7 @@ local function replace_matches_and_add_lines(params)
     local lines = _eval_lines(lines, matches)
     lines = T.append({line}, lines)
     -- return vim.print{lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}
-    return {lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}
+    return {lines=lines, offset=params.offset, ctxt=ctxt, range=params.range, continue=params.continue}
   end
 end
 
@@ -89,7 +89,7 @@ end
       local line = string.gsub(ctxt.line, matches[index], suffix)
       local lines = F.map(lines, S.prefix_with(matches[1]))
       lines = T.append({line}, lines)
-      return {lines=lines, offset=params.offset, ctxt=ctxt}
+      return {lines=lines, offset=params.offset, continue=params.continue, ctxt=ctxt}
     end
   end
 

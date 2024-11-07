@@ -2,12 +2,14 @@
 -- dbg.auto_where = 2
 
 local assert_expect_keys = require'stub_nvim_keys'.assert_expect_keys
-local autocomplete = require'lamine.autocompletion'.autocomplete
+local A = require'lamine.autocompletion'
 _G.assert = assert
 
 describe('input mode keymappings', function()
   local shortcuts = {
     ['<Leader><Space>'] = '<Esc>',
+    ['<Leader>='] = '<Esc>A',
+    ['<Leader>$'] = '<Esc>$',
     ['<Leader>r'] = '<C-r>',
     ['<Leader>c'] = '<C-c>',
     ['<Leader>p'] = '<C-p>',
@@ -41,8 +43,11 @@ describe('triggered functions', function()
 end)
 
 describe('defined functions', function()
-  it('calls the correct function', function()
-    assert.is.equal(autocomplete, vim.keymaps.i[',,'])
+  it('calls the correct function for autocompletion', function()
+    assert.is.equal(A.autocomplete, vim.keymaps.i[',,'])
+  end)
+  it('calls the correct function for autocontinue', function()
+    assert.is.equal(A.autocontinue, vim.keymaps.i[',;'])
   end)
 end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

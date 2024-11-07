@@ -5,7 +5,7 @@ local C = require'lamine.autocompletion.completers'
 return {
   {
     "^(%s*)(.*)(@@@)",
-    C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}}
+    C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
   },
   {
     "^(%s*)(%sOK)",
