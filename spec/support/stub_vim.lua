@@ -10,6 +10,7 @@ local dump = require'pl.pretty'.dump
 
 vim = {
   api ={},
+  b = {},
   cmd = nil, -- to be stubbed
   commands = {},
   fed_keys = {},
@@ -38,6 +39,13 @@ end
 
 vim.api.nvim_feedkeys = fk.feedkeys
 vim.api.nvim_replace_termcodes = fk.replace_termcodes
+vim.api.nvim_win_set_cursor = function(win, rowcol)
+  if win ~= 0 then
+    error('Only window 0 supported')
+  end
+  vim._buffer.cursor = rowcol
+end
+
 vim.fn.expand = fni.expand(vim)
 
 local function _adapt_cursor()

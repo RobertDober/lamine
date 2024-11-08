@@ -6,10 +6,11 @@ local ac = require'lamine.autocompletion.completion'
 local fc = ac.find_completion
 
 local function context(line)
-  return {filetype = 'lua', line = line} 
+  return {filetype = 'lua', line = line, basename='hello.lua'} 
 end
 
 describe('completions found for lua', function()
+
   it('does not find anything if there is no match', function()
     assert.is_nil(fc(context('epiufhezf gzgjrzoi')))
   end)

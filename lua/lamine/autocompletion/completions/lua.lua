@@ -8,6 +8,11 @@ return {
     C.replace_matches{nil, nil, C.match_elements(" ", 5, " = ")}
   },
   {
+    "^(%s*)(local)(%s+)(%w+)(%s*)(%=%s*)$",
+    C.replace_matches{
+      nil,   nil,  ' ', nil, '', C.match_elements(" = ", 4, " or ")}
+  },
+  {
     "^(%s*)(.*)(req)$",
     C.replace_suffix_and_add_lines{lines={}, suffix="require'"}
   },

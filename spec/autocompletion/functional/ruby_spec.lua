@@ -5,7 +5,7 @@ local ac = require'lamine.autocompletion.completion'
 local fc = ac.find_completion
 
 local function context(line)
-  return {filetype = 'ruby', line = line} 
+  return {filetype = 'ruby', line = line, basename='hello.rb'} 
 end
 
 describe('completions found for ruby', function()

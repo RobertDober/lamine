@@ -12,6 +12,10 @@ local ft_completions = {
   ruby = require'lamine.autocompletion.completions.ruby',
 }
 
+local subtype_completions = {
+  lua_spec = require'lamine.autocompletion.completions.lua_spec',
+}
+
 local function set_continuation(continue)
   if continue then
     local continuations = vim.b.autocontinuations or {}
@@ -61,12 +65,33 @@ local function find_ft_completion(ctxt)
   return completion
 end
 
+local function find_subtype_completion(ctxt)
+  local subtype = string.gsub(ctxt.basename, "%.[^.]*$", "")
+  subtype = ctxt.filetype .. string.gsub(subtype, '^.*%_', '_')
+  -- vim.print(subtype)
+  -- vim.print(subtype_completions)
+  local subtype_completion = subtype_completions[subtype]
+  -- vim.print(subtype_completion)
+  if not subtype_completion then
+    return
+  end
+  
+  local completion = find_value(subtype_completion, find_match_and_complete(ctxt))
+  return completion
+end
+
 local function find_completion(ctxt)
   local found = find_ft_completion(ctxt)
   
   if found then
     return found
   end
+
+  found = find_subtype_completion(ctxt)
+  if found then
+    return found
+  end
+
   found = find_general_completion(ctxt)
   if found then
     return found
