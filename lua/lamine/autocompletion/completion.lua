@@ -10,7 +10,10 @@ local ft_completions = {
   lua = require'lamine.autocompletion.completions.lua',
   markdown = require'lamine.autocompletion.completions.markdown',
   ruby = require'lamine.autocompletion.completions.ruby',
+  typst = require'lamine.autocompletion.completions.typst',
 }
+
+local general_completions = require'lamine.autocompletion.completions.general_completions'
 
 local subtype_completions = {
   lua_spec = require'lamine.autocompletion.completions.lua_spec',
@@ -40,10 +43,6 @@ local function complete_with(completion)
   set_continuation(continue)
 end
 
-local function find_general_completion(ctxt)
-
-end
-
 local function find_match_and_complete(ctxt)
   return function(entry)
     local pattern = entry[1]
@@ -53,6 +52,12 @@ local function find_match_and_complete(ctxt)
       return handler(matches, ctxt)
     end
   end
+end
+
+
+local function find_general_completion(ctxt)
+  local completion = find_value(general_completions, find_match_and_complete(ctxt))
+  return completion
 end
 
 local function find_ft_completion(ctxt)
@@ -80,7 +85,7 @@ local function find_subtype_completion(ctxt)
   return completion
 end
 
-local function find_completion(ctxt)
+local function find_ft_specific_completion(ctxt)
   local found = find_ft_completion(ctxt)
   
   if found then
@@ -90,6 +95,17 @@ local function find_completion(ctxt)
   found = find_subtype_completion(ctxt)
   if found then
     return found
+  end
+  
+end
+
+local function find_completion(ctxt)
+  local found
+  if ctxt.filetype then
+    found = find_ft_specific_completion(ctxt)
+    if found then
+      return found
+    end
   end
 
   found = find_general_completion(ctxt)

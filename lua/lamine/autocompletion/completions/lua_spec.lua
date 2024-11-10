@@ -18,5 +18,10 @@ local completions = map(shorts, function(shrt)
   }
 end)
 
+table.insert(completions,
+{
+  "^(%s*)(desc)(%s*)$", C.replace_matches{nil, "describe('", ""}
+})
+-- vim.print(completions)
 return completions
 -- SPDX-License-Identifier: AGPL-3.0-or-later

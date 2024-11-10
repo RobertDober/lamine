@@ -41,7 +41,10 @@ local function _eval_lines(lines, matches)
   -- local lines = F.map(lines, function(line) return vim.print(_apply(line, matches)) end)
   local lines = F.map(lines, function(line) return _apply(line, matches) end)
   -- vim.print{lines=lines}
-  lines = F.map(lines, S.prefix_with(matches[1]))
+  local prefix = matches[1]
+  if string.match(prefix, "^%s+$") then
+    lines = F.map(lines, S.prefix_with(matches[1]))
+  end
   return lines
 end
 
@@ -54,8 +57,9 @@ local function replace_matches_and_add_lines(params)
     local line = T.combine(matches, replacers, _maybe_replace_with, matches)
     -- vim.print(line)
     line = T.join(line)
-    -- vim.print(line)
+    -- vim.print(lines)
     local lines = _eval_lines(lines, matches)
+    -- vim.print(lines)
     lines = T.append({line}, lines)
     -- return vim.print{lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}
     return {lines=lines, offset=params.offset, ctxt=ctxt, range=params.range, continue=params.continue}

@@ -1,7 +1,6 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-
 local ac = require'lamine.autocompletion.completion'
 local fc = ac.find_completion
 
