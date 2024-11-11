@@ -9,9 +9,31 @@ local function file_and_lnb(file)
   return file 
 end
 
-local command = 'nvim -u ~/gh/lua/lamine/lamine.lua'
-for _, file in ipairs(arg) do
-  command = command .. ' ' .. file_and_lnb(file)
+local function mk_directive(dir, arg)
+  if dir == "cs" then
+    return '-c "colorscheme ' .. arg .. '"'
+  end
+  if string.match(arg, "^%d+$") then
+    return '-c "tabnew '.. dir ..'|normal ' .. arg .. 'Gzz"'
+  end
+  return ""
 end
-print(command)
+
+local function mk_command(arg)
+  local directive, argument = string.match(arg, "^([^:]+):(.*)$")
+  if directive then
+    return mk_directive(directive, argument)
+  end
+  return arg
+end
+
+local command = 'nvim -u ~/gh/lua/lamine/lamine.lua'
+
+
+for _, file in ipairs(arg) do
+  command = command .. ' ' .. mk_command(file)
+end
+if os.getenv("DEBUG_LAMINE") or os.getenv("DEBUG_LAMINE_STARTUP") then
+  print(command)
+end
 os.execute(command)
