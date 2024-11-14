@@ -1,6 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local abort = {}
 local function append(...)
   local tables = {...}
   local result = {}
@@ -33,6 +34,9 @@ local function combine(tbl1, tbl2, fun, context)
   for i = 1, #tbl1 do
     -- vim.print{i=i, t=t}
     local result = fun(tbl1[i], tbl2[i], context)
+    if result == abort then
+      return
+    end
     table.insert(t, result)
   end
   return t
@@ -86,6 +90,7 @@ local function slice(tbl, fi, li)
 end
 
 return {
+  abort = abort,
   append = append,
   combine = combine,
   get = get,

@@ -1,5 +1,6 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
+local append = require'lamine.tools.table'.append
 local C = require'lamine.autocompletion.completers'
 local map = require'lamine.functional'.map
 
@@ -16,22 +17,21 @@ local completions = map(arrows, function(arrow)
   return {pattern, replacement}
 end)
 
+local fold_completion
+for i = 3, 5 do
+  fold_completion = {
+    "^(.*)(%s+)(ofld)(" .. tostring(i) .. ")(%s*)$",
+    C.replace_matches{nil, nil, string.rep("{", i), '', ''}
+  }
+  table.insert(completions, fold_completion)
+  fold_completion = {
+    "^(.*)(%s+)(cfld)(" .. tostring(i) .. ")(%s*)$",
+    C.replace_matches{nil, nil, string.rep("}", i), '', ''}
+  }
+  table.insert(completions, fold_completion)
+end
+
 -- vim.print(completions)
 return completions
 
--- return {
-  --   {
-    --     "^(.*)(=>)(%s+)$",
-    --     C.replace_matches{nil, '⇒4
-    --   },
-    --   {
-      --     "^(%s*)(local)(%s+)(%w+)(%s*)(%=%s*)$",
-      --     C.replace_matches{
-        --       nil,   nil,  ' ', nil, '', C.match_elements(" = ", 4, " or ")}
-        --     },
-        --     {
-          --       "^(%s*)(.*)(req)$",
-          --       C.replace_suffix_and_add_lines{lines={}, suffix="require'"}
-          --     },
-          --   }
-          -- SPDX-License-Identifier: AGPL-3.0-or-later
+-- SPDX-License-Identifier: AGPL-3.0-or-later

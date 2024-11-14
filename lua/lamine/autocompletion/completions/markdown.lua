@@ -1,5 +1,6 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
+
 local C = require'lamine.autocompletion.completers'
 
 local function rep(str, index)
