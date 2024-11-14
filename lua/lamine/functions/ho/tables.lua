@@ -1,9 +1,9 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local function at(n)
+local function at(n, default)
   return function(subject)
-    return subject[n]
+    return subject[n] or default
   end
 end
 

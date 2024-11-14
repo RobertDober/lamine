@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
-local abort = {}
+local abort = {'local constant tools.table.abort'}
 local function append(...)
   local tables = {...}
   local result = {}
