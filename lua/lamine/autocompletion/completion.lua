@@ -47,6 +47,7 @@ local function find_match_and_complete(ctxt)
   return function(entry)
     local pattern = entry[1]
     local handler = entry[2]
+    -- vim.print{pattern=pattern, handler=handler}
     local matches = {string.match(ctxt.line, pattern)}
     if matches and #matches > 0 then
       return handler(matches, ctxt)
