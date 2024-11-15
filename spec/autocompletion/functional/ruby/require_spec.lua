@@ -1,0 +1,51 @@
+-- local dbg = require("debugger")
+-- dbg.auto_where = 2
+
+local ac = require'lamine.autocompletion.completion'
+local fc = ac.find_completion
+
+local function context(line)
+  return {filetype = 'ruby', line = line, basename='hello.rb'} 
+end
+describe('requires', function()
+  describe('pure require', function()
+    it('inserts require', function()
+      local result = fc(context('req'))
+      assert.are.same({"require '"}, result.lines)
+      assert.is_nil(result.offset)
+    end)
+    it('inserts require removing trailing spaces', function()
+      local result = fc(context('req '))
+      assert.are.same({"require '"}, result.lines)
+      assert.is_nil(result.offset)
+    end)
+    it('only works at the beginning of the line', function()
+      assert.is_nil(fc(context(' req')))
+    end)
+    it('and even then only with no other text present', function()
+      assert.is_nil(fc(context('reqs')))
+      assert.is_nil(fc(context('req a')))
+    end)
+  end)
+
+  describe('require relative', function()
+    it('inserts require relative no trailing spaces', function()
+      local result = fc(context('reqrel'))
+      assert.are.same({"require_relative '"}, result.lines)
+      assert.is_nil(result.offset)
+    end)
+    it('inserts require_relative removing trailing spaces', function()
+      local result = fc(context('reqrel '))
+      assert.are.same({"require_relative '"}, result.lines)
+      assert.is_nil(result.offset)
+    end)
+    it('only works at the beginning of the line', function()
+      assert.is_nil(fc(context(' reqrel')))
+    end)
+    it('and even then only with no other text present', function()
+      assert.is_nil(fc(context('reqrels')))
+      assert.is_nil(fc(context('reqrel a')))
+    end)
+  end)
+end)
+-- SPDX-License-Identifier: AGPL-3.0-or-later

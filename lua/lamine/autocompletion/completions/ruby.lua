@@ -2,10 +2,19 @@
 -- dbg.auto_where = 2
 local C = require'lamine.autocompletion.completers'
 
+local  requires = {
+  req = 'require',
+  reqrel = 'require_relative',
+}
+-- local function replace_matches_with
 return {
   {
     "^(%s*)(.*)(@@@)",
     C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
+  },
+  {
+    "^(%w+)(%s*)$",
+    C.replace_matches{C.match_against_table(requires), " '"}
   },
   {
     "^(%s*)(%sOK)",

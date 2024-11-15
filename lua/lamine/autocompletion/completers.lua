@@ -7,14 +7,27 @@ local S = require'lamine.functions.ho.strings'
 local T = require'lamine.tools.table'
 
 
-local function _apply(r, context)
+local function _apply(r, context, match)
+  if not r then
+    return match
+  end
   if type(r) == "string" then
     return r
   end
   if type(r) == "number" then
     return T.get(context, r)
   end
-  return r(context)
+  return r(context, match)
+end
+
+local function match_against_table(tbl)
+  return function(_matches, match)
+    local replacement = tbl[match]
+    if replacement then
+      return replacement
+    end
+    return T.abort
+  end
 end
 
 local function match_elements(...)
@@ -31,12 +44,7 @@ local function match_elements(...)
 end
 
 local function _maybe_replace_with(m, r, context)
-  if r then
-    local result = _apply(r, context)
-    -- vim.print(result)
-    return result
-  end
-  return m
+  return _apply(r, context, m)
 end
 
 local function _eval_lines(lines, matches)
@@ -100,6 +108,7 @@ end
 
 return {
   get_function = get_function,
+  match_against_table = match_against_table,
   match_elements = match_elements,
   replace_matches = replace_matches,
   replace_matches_and_add_lines = replace_matches_and_add_lines,

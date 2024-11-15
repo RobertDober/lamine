@@ -33,11 +33,11 @@ for i = 3, 5 do
   table.insert(completions, fold_completion)
 end
 
-local predefined_function_complition = {
+local predefined_function_completion = {
   "^(.*)(%%)(%w+)(%s*)$",
   C.replace_matches{nil, '',  C.get_function(predefined_functions, 3, abort), ''} 
 }
-table.insert(completions, predefined_function_complition)
+table.insert(completions, predefined_function_completion)
 -- vim.print(completions)
 return completions
 
