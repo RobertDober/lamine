@@ -22,6 +22,7 @@ describe('input mode keymappings', function()
     ['=)'] = '}',
     [':)'] = ']',
     [':('] = ']',
+    [':l'] = '|',
     ['-a'] = '<Esc>A',
   }
 

@@ -17,6 +17,7 @@ local general_completions = require'lamine.autocompletion.completions.general_co
 
 local subtype_completions = {
   lua_spec = require'lamine.autocompletion.completions.lua_spec',
+  ruby_spec = require'lamine.autocompletion.completions.ruby_spec',
 }
 
 local function set_continuation(continue)
