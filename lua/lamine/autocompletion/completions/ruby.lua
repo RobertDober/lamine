@@ -3,6 +3,7 @@
 
 local append = require'lamine.tools.table'.append
 local C = require'lamine.autocompletion.completers'
+local P = require'lamine.autocompletion.patterns'
 
 local continuing_kwds = {
   att = 'attr_reader',
@@ -23,14 +24,8 @@ local at_beginning_completions = {
     "^(%w+)(%s*)$",
     C.replace_matches{C.match_against_table(requires), " '"}
   },
-  {
-    "^(%s*)(%w+)(%s*)$",
-    C.replace_matches{nil, C.match_against_table(starting_keywords), ''}
-  },
-  {
-    "^(%s*)(%w+)(%s*)$",
-    C.replace_matches{nil, C.match_against_table(continuing_kwds), ' '}
-  },
+  P.word(C.replace_matches{nil, C.match_against_table(starting_keywords), ''}),
+  P.word(C.replace_matches{nil, C.match_against_table(continuing_kwds), ' '}),
 }
 
 local inline_completions = {
