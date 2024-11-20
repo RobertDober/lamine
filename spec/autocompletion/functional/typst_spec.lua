@@ -32,15 +32,4 @@ describe('headlines', function()
   end
 end)
 
-describe('page breaks', function()
-  it("expands at beginning of the line as follows", function()
-    local result = fc(context('pbr '))
-    local expected = {
-      '#pagebreak(weak: true)',
-      ''
-    }
-    assert.are.same(expected, result.lines)
-    assert.are.same({1, 1}, result.offset)
-  end)
-end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

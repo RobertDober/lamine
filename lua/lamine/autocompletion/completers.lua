@@ -24,6 +24,9 @@ local function match_against_table(tbl)
   return function(_matches, match)
     local replacement = tbl[match]
     if replacement then
+      if replacement == true then
+        return match
+      end
       return replacement
     end
     return T.abort
@@ -47,13 +50,15 @@ local function _maybe_replace_with(m, r, context)
   return _apply(r, context, m)
 end
 
-local function _eval_lines(lines, matches)
+local function _eval_lines(lines, matches, do_not_indent)
   -- local lines = F.map(lines, function(line) return vim.print(_apply(line, matches)) end)
   local lines = F.map(lines, function(line) return _apply(line, matches) end)
   -- vim.print{lines=lines}
   local prefix = matches[1]
   if string.match(prefix, "^%s+$") then
-    lines = F.map(lines, S.prefix_with(matches[1]))
+    if not do_not_indent then
+      lines = F.map(lines, S.prefix_with(matches[1]))
+    end
   end
   return lines
 end
@@ -62,13 +67,18 @@ local function replace_matches_and_add_lines(params)
   local lines = params.lines or {}
   local range = params.range or {0, 0}
   local replacers = params.replacers or error("required arg .replacers missing")
+  local do_not_indent = false
+  -- params.indent equals nil means the default value of true
+  if params.indent == false then
+    do_not_indent = true
+  end
   return function(matches, ctxt)
     -- vim.print(matches)
     local line = T.combine(matches, replacers, _maybe_replace_with, matches)
     if line then
       line = T.join(line)
       -- vim.print(lines)
-      local lines = _eval_lines(lines, matches)
+      local lines = _eval_lines(lines, matches, do_not_indent)
       -- vim.print(lines)
       lines = T.append({line}, lines)
       -- return vim.print{lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}

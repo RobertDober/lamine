@@ -1,6 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 local C = require'lamine.autocompletion.completers'
+local P = require'lamine.autocompletion.patterns'
 
 local function rep(str, index)
   return function(matches)
@@ -9,22 +10,20 @@ local function rep(str, index)
   end
 end
 
+local one_liners = {
+  inc = '#include "',
+  pbr = '#pagebreak(weak: true)',
+
+}
 return {
-  {
-    "^(pbr)(%s*)$",
-    C.replace_matches_and_add_lines{
-      replacers={'#pagebreak(weak: true)', ''},
-      lines = {''},
-      offset={1, 1}
-    }, 
-  },
-  {
-    "^(inc)(%s*)$",
-    C.replace_matches_and_add_lines{
-      replacers={'#include ""'},
-      offset={0, 7}
-    }, 
-  },
+  P.word(
+  C.replace_matches_and_add_lines{
+    replacers={'', C.match_against_table(one_liners), ''},
+    lines = {''},
+    offset={1, 1},
+    indent= false,
+  }
+  ),
   {
     "^(.*)(fn)(%s*)$",
     C.replace_matches_and_add_lines{
