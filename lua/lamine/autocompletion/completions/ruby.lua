@@ -14,8 +14,8 @@ local  requires = {
   reqrel = 'require_relative',
 }
 local starting_keywords = {
+  definit = 'def initialize',
   priv = 'private',
-
 }
 
 -- local function replace_matches_with
