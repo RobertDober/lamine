@@ -8,7 +8,7 @@ local find_value = require'lamine.functional'.find_value
 
 local ft_completions = {
   lua = require'lamine.autocompletion.completions.lua',
-  elexir = require'lamine.autocompletion.completions.elexir',
+  elixir = require'lamine.autocompletion.completions.elixir',
   markdown = require'lamine.autocompletion.completions.markdown',
   ruby = require'lamine.autocompletion.completions.ruby',
   typst = require'lamine.autocompletion.completions.typst',
@@ -51,6 +51,7 @@ local function find_match_and_complete(ctxt)
     local handler = entry[2]
     -- vim.print{pattern=pattern, handler=handler}
     local matches = {string.match(ctxt.line, pattern)}
+    -- vim.print(pattern)
     if matches and #matches > 0 then
       return handler(matches, ctxt)
     end

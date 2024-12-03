@@ -5,27 +5,29 @@ local append = require'lamine.tools.table'.append
 local C = require'lamine.autocompletion.completers'
 local P = require'lamine.autocompletion.patterns'
 
-local continuing_kwds = {
-  att = 'attr_reader',
+local do_completion_kwds = {
+  def = 'def',
+  defp = 'defp',
 }
 
-local  requires = {
-  req = 'require',
-  reqrel = 'require_relative',
-}
-local starting_keywords = {
-  definit = 'def initialize',
-  priv = 'private',
-}
-
--- local function replace_matches_with
-local at_beginning_completions = {
+local do_completions = {
+  -- catch already there
   {
-    "^(%w+)(%s*)$",
-    C.replace_matches{C.match_against_table(requires), " '"}
+    "^(%s*)(.*)(%sdo)(%s*)",
+    C.replace_matches_and_add_lines{
+      replacers={nil, nil, nil, ''},
+      lines={"  ", "end"},
+      offset={1, 999}
+    }
   },
-  P.word(C.replace_matches{nil, C.match_against_table(starting_keywords), ''}),
-  P.word(C.replace_matches{nil, C.match_against_table(continuing_kwds), ' '}),
+  {
+    "^(%s*)(%w+)(.*)(%s*)",
+    C.replace_matches_and_add_lines{
+      replacers={nil, C.match_against_table(do_completion_kwds), nil, ' do'},
+      lines={"  ", "end"},
+      offset={1, 999}
+    }
+  },
 }
 
 local inline_completions = {
@@ -34,60 +36,37 @@ local inline_completions = {
     C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
   },
   {
+    "^(%s*)(.*)(&&&)",
+    C.replace_suffix_and_add_lines{lines={}, suffix=" |> ", offset={0, 999}}
+  },
+  {
     "^(%s*)(.*)(%sOK)",
-    C.replace_suffix_and_add_lines{lines={}, suffix=" {ok: true, ", offset={0, 999}}
+    C.replace_suffix_and_add_lines{lines={}, suffix=" {:ok, ", offset={0, 999}}
   },
   {
     "^(%s*)(.*)(%sNOK)",
-    C.replace_suffix_and_add_lines{lines={}, suffix=" {ok: false, ", offset={0, 999}}
-  },
-  {
-    "^(%s*)(%sERR)",
-    C.replace_suffix_and_add_lines{lines={}, suffix=" {ok: false, ", offset={0, 999}}
+    C.replace_suffix_and_add_lines{lines={}, suffix=" {:error,", offset={0, 999}}
   },
 }
 
-local block_kwds = {
-  def = 'def',
-  case = 'case',
-}
-
-local block_completions = {
+local next_line_completions = {
   {
-    "^(%s*)(%w+)(.*)(%s*)$",
+    "(%s*)(%|%>)(.*)(%s*)$",
     C.replace_matches_and_add_lines{
-      replacers={nil, C.match_against_table(block_kwds), nil, ''},
-      lines={"  ", "end"},
+      replacers={nil, nil, nil, ''},
+      lines={"|> "},
       offset={1, 999}
-    }
-  },
-  {
-    "^(%s*)(memo%s)(%w+)(%s*)$",
-    C.replace_matches_and_add_lines{replacers={nil, 'def ', nil, ''}, lines={C.match_elements("  @__", 3, "__ ||= "), "end" }, offset={1, 999}}, 
-  },
-  { 
-    "^(%s*)(.*)(%{%s*%|.*%|)(%s*)$",
-    C.replace_matches_and_add_lines{replacers={
-      nil, nil, nil, ''}, lines={"  ", "}"}, offset={1, 999}
-    }, 
-  },
-  { 
-    "^(%s*)(.*)(do%s+%|.*%|)(%s*)$",
-    C.replace_matches_and_add_lines{replacers={
-      nil, nil, nil, ''}, lines={"  ", "end"}, offset={1, 999}
-    }, 
-  },
-  {
-    "^(%s*)(%.)(.*)$",
-    C.replace_matches_and_add_lines{replacers={nil, nil, nil}, lines={"."}, offset={1, 999}}, 
-  },
-
+    },
+  }
 }
 
-return append(
-at_beginning_completions,
+local completions = append(
 inline_completions,
-block_completions
+next_line_completions,
+do_completions
 )
+
+-- vim.print(completions)
+return completions
 
 -- SPDX-License-Identifier: AGPL-3.0-or-later
