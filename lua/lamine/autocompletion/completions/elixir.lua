@@ -30,6 +30,28 @@ local do_completions = {
   },
 }
 
+local multiline_string_attribute_names = {
+  doc = "@doc",
+  moduledoc = "@moduledoc",
+}
+local multiline_string_completions = {
+  {
+    "(%s*)(%@?)(%w+)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers={nil, '', C.match_against_table(multiline_string_attribute_names), ' ~S"""'},
+      lines={"",'"""'},
+      offset={1, 999}
+    }
+  },
+  {
+    "(%s*)(@?doc)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers={nil, '@doc',' """'},
+      lines={"  ",'"""'},
+      offset={1, 999}
+    }
+  }, 
+}
 local inline_completions = {
   {
     "^(%s*)(.*)(@@@)",
@@ -38,6 +60,10 @@ local inline_completions = {
   {
     "^(%s*)(.*)(&&&)",
     C.replace_suffix_and_add_lines{lines={}, suffix=" |> ", offset={0, 999}}
+  },
+  {
+    "^(%s*)(.*)(fn)",
+    C.replace_suffix_and_add_lines{lines={}, suffix="fn -> ", offset={0, 999}}
   },
   {
     "^(%s*)(.*)(%sOK)",
@@ -51,6 +77,14 @@ local inline_completions = {
 
 local next_line_completions = {
   {
+    "^(%s*)(.*)(%&%&)(%s*)",
+    C.replace_matches_and_add_lines{
+      replacers={nil, nil, '', ''},
+      lines={"|> "},
+      offset={1, 999}
+    },
+  },
+  {
     "(%s*)(%|%>)(.*)(%s*)$",
     C.replace_matches_and_add_lines{
       replacers={nil, nil, nil, ''},
@@ -60,11 +94,13 @@ local next_line_completions = {
   }
 }
 
-local completions = append(
-inline_completions,
-next_line_completions,
-do_completions
-)
+local completions =
+  append(
+    inline_completions,
+    next_line_completions,
+    multiline_string_completions,
+    do_completions
+  )
 
 -- vim.print(completions)
 return completions

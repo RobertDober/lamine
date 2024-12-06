@@ -17,6 +17,7 @@ local ft_completions = {
 local general_completions = require'lamine.autocompletion.completions.general_completions'
 
 local subtype_completions = {
+  elixir_test = require'lamine.autocompletion.completions.elixir_test',
   lua_spec = require'lamine.autocompletion.completions.lua_spec',
   ruby_spec = require'lamine.autocompletion.completions.ruby_spec',
 }

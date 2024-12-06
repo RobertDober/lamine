@@ -11,7 +11,7 @@ describe("setting all keymaps for tmux", function()
   end)
 
   local shortcuts = {
-    ["<space>c"] = "console",
+    ["<space>c"] = "*console",
     ["<space>ec"] = "elixir-console",
     ['<space>sv'] = 'server',
     ['<space>th'] = ':-1',

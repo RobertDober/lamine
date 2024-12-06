@@ -15,7 +15,7 @@ local function tmux_navigate(dir, command)
 end
 
 -- navigation only
-vim.keymap.set('n', '<space>c', tmux_navigate('console'), {})
+vim.keymap.set('n', '<space>c', tmux_navigate('*console'), {})
 vim.keymap.set('n', '<space>ec', tmux_navigate('elixir-console'), {})
 vim.keymap.set('n', '<space>sv', tmux_navigate('server'), {})
 vim.keymap.set('n', '<space>ta', tmux_navigate(), {})
