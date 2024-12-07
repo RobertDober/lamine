@@ -63,10 +63,21 @@ describe('doc and moduledoc', function()
     
   end)
 end)
+
+describe('optional opts', function()
+  it('inserts the needed stuff', function()
+    local result = fc(context('  def some( x, optopt'))
+    assert.are.same({'  def some( x, options \\\\ []) do', '    ', '  end'}, result.lines)
+    assert.are.same({1, 999}, result.offset)
+    assert.is_nil(result.continue)
+  end)
+end)
+
 describe('subtype completions not defined', function()
   it('does not replace describe"..."', function()
     local result = fc(context(' describe "..."'))
     assert.is_nil(result)
   end)
 end)
+
 -- SPDX-License-Identifier: AGPL-3.0-or-later

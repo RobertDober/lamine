@@ -91,7 +91,15 @@ local next_line_completions = {
       lines={"|> "},
       offset={1, 999}
     },
-  }
+  },
+  {
+    "^(%s*)(.*)(optopt)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers={nil, nil, 'options \\\\ []) do', ''},
+      lines={"  ", "end"},
+      offset={1, 999}
+    },
+  },
 }
 
 local completions =
