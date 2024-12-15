@@ -82,13 +82,19 @@ local function replace_matches_and_add_lines(params)
       -- vim.print(lines)
       lines = T.append({line}, lines)
       -- return vim.print{lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}
+      -- vim.print(params)
       return {lines=lines, offset=params.offset, ctxt=ctxt, range=params.range, continue=params.continue}
     end
   end
 end
 
-local function replace_matches(replacers)
-  return replace_matches_and_add_lines{replacers=replacers}
+local function replace_matches(replacers, params, debug)
+  local params = params or {}
+  params.replacers = replacers
+  if debug then
+    vim.print(params)
+  end
+  return replace_matches_and_add_lines(params)
 end
 
 local function replace_suffix_and_add_lines(params)

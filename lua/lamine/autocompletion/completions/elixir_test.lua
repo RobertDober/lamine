@@ -1,7 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
--- local append = require'lamine.tools.table'.append
+local append = require'lamine.tools.table'.append
 local C = require'lamine.autocompletion.completers'
   
 local block_kwds = {
@@ -20,6 +20,18 @@ local block_completions = {
   }
 }
 
-return block_completions
+local oneline_words = {
+  desc = 'describe "',
+  test = 'test "',
+}
+
+local oneline_completions = {
+  {
+    "^(%s*)(%w+)(%s*)$",
+    C.replace_matches{nil, C.match_against_table(oneline_words), ''}
+  },
+}
+
+return append(oneline_completions, block_completions)
   
 -- SPDX-License-Identifier: AGPL-3.0-or-later

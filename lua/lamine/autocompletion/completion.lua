@@ -41,7 +41,7 @@ local function complete_with(completion)
   api.set_lines(ctxt.lnb + range[1], ctxt.lnb + range[2], lines)
   -- vim.print{before=offset}
   offset = ctxt.fn.relative_offset(offset)
-  -- vim.print{after=offset}
+  vim.print{after=offset}
   api.set_cursor(offset)
   set_continuation(continue)
 end

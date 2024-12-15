@@ -1,5 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
+local append = require'lamine.tools.table'.append
+local map = require'lamine.functional'.map
 local C = require'lamine.autocompletion.completers'
 local P = require'lamine.autocompletion.patterns'
 
@@ -10,17 +12,30 @@ local function rep(str, index)
   end
 end
 
-local one_liners = {
-  inc = '#include "',
-  pbr = '#pagebreak(weak: true)',
-  br = '#linebreak()',
+local defined_instructions = {
+  set = '#set',
 }
 
-  local fcalls = {
-    sub = 'sub',
-  }
+local instructions = {
+  {
+    '^(%w+)(%s*)$',
+    C.replace_matches{C.match_against_table(defined_instructions), ''}
+  },
+}
+local one_liners = {
+  br = '#linebreak()',
+  inc = '#include "',
+  pbr = '#pagebreak(weak: true)',
+}
 
-return {
+local with_continuation = {
+  strike = {'#strike("")', -2}, 
+}
+local fcalls = {
+  sub = 'sub',
+}
+
+local completions = {
   P.word(
   C.replace_matches_and_add_lines{
     replacers={'', C.match_against_table(one_liners), ''},
@@ -50,4 +65,25 @@ return {
   },
 
 }
+
+local completes_with_cont = {
+ { "strike", '#strike("")', -2 },
+ { "unicode", '\\u{}', -1},
+}
+local function make_completion_with_cont(word)
+  local match = word[1]
+  local replacement = word[2]
+  local offset = word[3]
+  return {
+    "^(.*)(" .. match .. ")(%s*)$",
+    C.replace_matches({nil, replacement, ''}, {offset={offset}, continue={0,999}}, false) 
+  }
+end
+
+local continuations = map(completes_with_cont, make_completion_with_cont)
+return append(
+instructions,
+continuations,
+completions
+)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

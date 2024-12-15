@@ -43,13 +43,26 @@ local function prefix()
   return string.sub(current_line(), 1, col())
 end
 
+local function relative_line_offset(c)
+  if c > 0 then
+    return {0, c}
+  end
+  return {current_lnb(), c + #current_line()}
+end
+
 local function relative_offset(offset)
   local row = offset[1]
-  if row == 0 then
-    return {current_lnb(), col() + offset[2]}
+  local c = offset[2]
+  if c then
+    if row == 0 then
+      return {current_lnb(), col() + c}
+    end
+    return {current_lnb() + row, c}
   end
-  return {current_lnb() + row, offset[2]}
+  -- vim.print{row = row}
+  return relative_line_offset(row)
 end
+
 
 local function set_current_line(data, lnb)
   local lnb = lnb or current_lnb()
@@ -78,7 +91,7 @@ local context_functions = {
   set_current_line = set_current_line,
   suffix = suffix,
 }
-  
+
 local function current_context()
   local ctxt = {
     abspath = api.abspath(),
