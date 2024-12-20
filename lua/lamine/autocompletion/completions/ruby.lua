@@ -16,6 +16,7 @@ local  requires = {
 local starting_keywords = {
   definit = 'def initialize',
   priv = 'private',
+  ret = 'return ',
 }
 
 -- local function replace_matches_with
