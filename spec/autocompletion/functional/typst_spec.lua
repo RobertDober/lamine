@@ -32,4 +32,22 @@ describe('headlines', function()
   end
 end)
 
+describe('# at the beginning', function()
+  for i = 0, 2 do
+    it('expands to a ' .. tostring(i) .. 'space indented #', function()
+      local result = fc(context(string.rep(' ', i)))
+      local expected = {
+        string.rep(' ', i) .. '#'
+      }
+      assert.are.same(expected, result.lines)
+      assert.is_nil(result.offset)
+    end)
+  end
+  for _, s in ipairs{"  1", " a", "-x"} do
+    it('does not work with non whitespace ' .. s, function()
+      local result = fc(context(s))
+      assert.is_nil(result)
+    end)
+  end
+end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

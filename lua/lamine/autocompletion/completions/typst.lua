@@ -63,7 +63,10 @@ local completions = {
     "^(.*)(sup)(.*)$",
     C.replace_matches{nil, "#super(", ""}
   },
-
+  {
+    "^(%s*)(%s*)$",
+    C.replace_matches{nil, "#"}
+  },
 }
 
 local completes_with_cont = {
