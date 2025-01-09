@@ -38,8 +38,13 @@ local function complete_with(completion)
   local offset = completion.offset or {0, 999}
   local continue = completion.continue
 
+
   api.set_lines(ctxt.lnb + range[1], ctxt.lnb + range[2], lines)
+  if completion.set_cursor then
+    api.set_cursor(context.current_lnb(), 999)
+  end
   -- vim.print{before=offset}
+  vim.print{col_before=context.col()} 
   offset = ctxt.fn.relative_offset(offset)
   vim.print{after=offset}
   api.set_cursor(offset)

@@ -83,7 +83,7 @@ local function replace_matches_and_add_lines(params)
       lines = T.append({line}, lines)
       -- return vim.print{lines=lines, offset=params.offset, ctxt=ctxt, range=params.range}
       -- vim.print(params)
-      return {lines=lines, offset=params.offset, ctxt=ctxt, range=params.range, continue=params.continue}
+      return {lines=lines, set_cursor=params.set_cursor, offset=params.offset, ctxt=ctxt, range=params.range, continue=params.continue}
     end
   end
 end

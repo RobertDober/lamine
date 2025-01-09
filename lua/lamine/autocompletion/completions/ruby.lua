@@ -34,6 +34,10 @@ local inline_completions = {
     C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
   },
   {
+    "^(%s*)(.*)(%:%=)",
+    C.replace_suffix_and_add_lines{lines={}, suffix="||= ", continue={0, 999}}
+  },
+  {
     "^(%s*)(.*)(%sOK)",
     C.replace_suffix_and_add_lines{lines={}, suffix=" {ok: true, ", offset={0, 999}}
   },

@@ -55,6 +55,7 @@ local function relative_offset(offset)
   local c = offset[2]
   if c then
     if row == 0 then
+      -- vim.print{current_col=col(), col_offset=c}
       return {current_lnb(), col() + c}
     end
     return {current_lnb() + row, c}

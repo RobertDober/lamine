@@ -24,7 +24,7 @@ describe('normal mode textual keymappings', function()
     ['<Space>l'] = '<C-W>l',
     ['<Space>k'] = '<C-W>k',
     ['<Space>j'] = '<C-W>j',
-    ['<Space>q'] = ':q<cr>',
+    ['<Space>q'] = ':q<cr>:tabprev<cr>',
     ['$$!!'] = ':q!<cr>',
   }
   for shortcut, mapping in pairs(shortcuts) do

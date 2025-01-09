@@ -1,6 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local append = require'lamine.tools.table'.append
 local C = require'lamine.autocompletion.completers'
 
 local function rep(str, index)
@@ -10,7 +11,11 @@ local function rep(str, index)
   end
 end
 
-return {
+local onelines = {
+  {
+    "^(%s*)code(%w*)(%s*)",
+    C.replace_matches{nil, "```", nil, ''}
+  },
   {
     "^(%s*)(hl)(%d)(%s*)$",
     C.replace_matches{nil, '', rep('#', 3), ' '}
@@ -24,4 +29,10 @@ return {
     C.replace_matches{nil, "[^", C.match_elements(3, "]") , nil},
   },
 }
+
+
+return append(
+  onelines
+  -- inlines
+)
 -- SPDX-License-Identifier: AGPL-3.0-or-later
