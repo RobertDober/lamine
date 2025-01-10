@@ -1,0 +1,1491 @@
+commit ba25b24d41718d3a2da69b92c77849b71c9eb7f8
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Jan 10 08:29:47 2025 +0100
+
+    Road to v0.1.1
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+        - win navigation better <space>q, Gf for <c-w>g-f
+        - allow <leader><space> to escape from command mode
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test, desc and test
+                    oneline completions
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr, # for empty ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+    
+    INTERNAL
+        - Redundant specs removed
+
+commit 66f13628ad13b4995b0b11bd9598f38acdd8d6ad
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Jan 9 19:07:01 2025 +0100
+
+    Road to v0.1.1
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+        - win navigation better <space>q, Gf for <c-w>g-f
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test, desc and test
+                    oneline completions
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr, # for empty ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+    
+    INTERNAL
+        - Redundant specs removed
+
+commit 905a71bfa116dfb331d31006cfb4f89a257100c8
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Jan 9 09:29:16 2025 +0100
+
+    Road to v0.1.1
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+        - win navigation better <space>q, Gf for <c-w>g-f
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test, desc and test
+                    oneline completions
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+    
+    INTERNAL
+        - Redundant specs removed
+
+commit afbaf6a2042ddf11eab543805809a26c71a77e11
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sun Dec 15 18:46:59 2024 +0100
+
+    Road to v0.1.1
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test, desc and test
+                    oneline completions
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 06003a3272accb70c5518fc63432cf811496e239
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Dec 7 07:29:36 2024 +0100
+
+    Road to v0.1.1
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 5439e8e0aa66d2bb58d4e8594a33c08f1db75206
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Dec 6 07:04:19 2024 +0100
+
+    v0.1.0
+    
+    LAST
+    
+        elixir autocompletion WIP
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started -> 'do', '|>', fn, #{}, doc, moduledoc
+                started subtype test -> describe and test
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit fcb7f5c42dd86dd917faad36ed31957443fcbb54
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Dec 3 08:54:36 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started 'do', '|>' WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit ffed97474e5556a38240f07419fb95d5f08220db
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 29 11:22:54 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - ELIXIR
+                started WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 80db4396a55a356e3b378d9fb8ec8a0df70cd14f
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 22 07:49:00 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+                simple word replacements WIP lo ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv, definit → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 4d925355bd516b031ac59a5457f7bad3ceb155d0
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Wed Nov 20 12:54:35 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv → ✓
+    
+            - TYPST
+               footnote, hl%d, inc, pbr ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 5edc39620b01cad516e10f2d29bd84f85443d088
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Wed Nov 20 08:54:55 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+            - created common patterns module
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv → ✓
+    
+            - TYPST
+               footnote, hl%d ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 24ecab561d0eb9b5a9db7122b85a65312990c8e6
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Nov 19 19:54:49 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                continuing keywords WIP attr_reader → ✓
+                starting keywords WIP priv → ✓
+    
+            - TYPST
+               footnote, hl%d ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 6f72078fcbbf3175125d54fe530f03473d0c37df
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 15 19:57:49 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires ✓
+                starting keywords WIP priv → ✓
+    
+            - TYPST
+               footnote, hl%d ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 2296447a2605398ecbdb0fb50653af33b3db8829
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 15 19:39:17 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+            - abort function to allow replacers to abort a match
+            - replacers C.get_function (from predefined) C.match_against_table (to replace a generic match from a table or abort
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires WIP
+    
+            - TYPST
+               footnote, hl%d ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit d7ec382b76765c0f35eb943f0fa3a1fc5092f9a6
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 15 18:36:38 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+    
+        Filetype Autocompletion
+    
+            - MARKDOWN WIP (fn%d for footnotes, hl%d for headlines)
+            - GENERAL
+                arrows ✓
+                %functions WIP
+    
+            - LUA
+                req,  local req (with var assignment), ERR ✓
+    
+            - RUBY
+                string interpolation @@@, def, case, OK, NOK ✓
+                requires WIP
+    
+            - TYPST
+               footnote, hl%d ✓
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 74e523361274693976e9ee88a2a5afff7d39ba03
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Nov 14 21:51:32 2024 +0100
+
+    Road to v0.1.0
+    
+    TODO:
+        Fix failing spec by stubbing vim.api.nvim_eval
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                - lua WIP (req and local req)
+                - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                  and ERR)
+                - typst footnote
+                - GENERAL arrows
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit 41339bcaf857538579710bba01e039b8ffe703eb
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Nov 14 18:19:14 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                - lua WIP (req and local req)
+                - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                  and ERR)
+                - typst footnote
+                - GENERAL arrows
+    
+    LIBRARY
+        - tools.combine can be aborted
+
+commit a8cad3474ddd4d18c2336121050f55e28369a97c
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Nov 12 08:04:00 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+        - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+        - speced lua ftplugin settings
+        - gitcommit settings
+    
+    KEYBINDINGS
+        - speced all defined keymappings
+        - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+        - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+        - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                - lua WIP (req and local req)
+                - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                  and ERR)
+                - typst footnote
+                - GENERAL arrows
+    
+    ETC
+
+commit b433f6fbdc71464eb32e77f2c116b6883dc4c6f7
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Nov 11 09:49:05 2024 +0100
+
+    Road to v0.1.0
+    
+    STARTUP
+    - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    
+    CONFIGURATION
+    - speced lua ftplugin settings
+    
+    KEYBINDINGS
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    
+    COMMANDS
+    
+    AUTOCOMPLETION
+    - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+                    - typst footnote
+                    - GENERAL arrows
+    
+    ETC
+
+commit e36222f3cd9a55eac5dffa764e0418cb3642c7c9
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Nov 11 08:45:23 2024 +0100
+
+    Road to v0.1.0
+    
+    - startup script WIP (lnb and tabs for files ✓, colorschemes, nerdtree
+            etc, missing)
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+                    - typst footnote
+                    - GENERAL arrows
+
+commit 86dcf7362cd72be1625cb2b78f473225a2dc4885
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sun Nov 10 20:05:48 2024 +0100
+
+    Road to v0.1.0
+    
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+                    - typst footnote
+                    - GENERAL arrows
+
+commit 3a2232a96dcb0ed701a8ae2ba14a6d2cecffdfd0
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Nov 8 22:29:14 2024 +0100
+
+    Road to v0.1.0
+    
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes, hl%d for headlines)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+
+commit d073e1b57b352aa44147c1c938e30f20a7892f7b
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Nov 7 19:40:27 2024 +0100
+
+    Road to v0.1.0
+    
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - basic continuations (set cursor) ✓
+            - basic continuations Integretation Specs WIP
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+
+commit ca372a4b1add1ed3f79c23b36045890faa901e5b
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Nov 5 09:44:26 2024 +0100
+
+    Road to v0.1.0
+    
+    - speced all defined keymappings
+    - working on keymappings to replace vimine keymappings
+            - plugin dependent -> <Leader>co for Commentary
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - refactored context and api ✓
+            - refactoring with the almighty replace_matches_and_add_lines ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@, def, case, OK, NOK
+                      and ERR)
+
+commit 60afc8b2bac3a62213325af83487281179920837
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Nov 4 22:41:19 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@ and case, OK, NOK
+                      and ERR)
+
+commit ccaabdf45c45f6573a754af69d299b9692f2765f
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Nov 4 15:30:43 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - markdown WIP (fn%d for footnotes)
+                    - lua WIP (req and local req)
+                    - ruby WIP (string interpolation @@@ and case)
+
+commit db37f2882925bf6e3f5cc111b3feb8df82b75ed9
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Nov 2 21:20:43 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - progress on tmux mappings WIP
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - negative col offsets fixed
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented WIP
+                    - lua WIP
+                    - ruby WIP
+
+commit bca551781ab50d369f55a055f0b9fdcebac70f43
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Nov 2 09:29:46 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - speced lua ftplugin settings
+    - autocompletion WIP
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented
+
+commit f4a1619444849867a39df1b50b6633088a04b1b8
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Wed Oct 30 07:20:49 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - autocompletion WIP
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - autocompletions to be speced and implemented
+
+commit aff19786888c4dec983eeb97a230e2cd3f985d31
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Oct 29 21:12:57 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - autocompletion WIP
+            - refactored context and api ✓
+            - keybinding for input mode and autocomplete defined ✓
+            - debugging some helpers for lua ftcompletions WIP
+
+commit ca19ffd549712a987c09dd8eb0c25d0a86efefef
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Mon Oct 28 17:37:31 2024 +0100
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - autocompletion WIP
+            - refactored context and api
+            - keybinding for input mode and autocomplete defined
+
+commit b89c0e749bf0a0aada056a7f1e68571947a203c3
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Thu Oct 24 19:48:51 2024 +0200
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - speced all defined keymappings
+    - autocompletion WIP
+
+commit ee912cc384baa9175ea419a77026c75926d3f174
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Wed Oct 23 07:17:48 2024 +0200
+
+    Road to v0.1.0
+    
+    - working on keymappings to replace vimine keymappings
+    - autocompletion WIP
+
+commit e40d25ef599d2b1692c62826254f15ac3f7d5653
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sun Oct 20 22:01:20 2024 +0200
+
+    working on keymappings to replace vimine keymappings
+
+commit 67a4708fb1abcbc8a481c71cf293981738ca6a31
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Wed Sep 11 18:14:32 2024 +0200
+
+    lamine importing vimine functionality
+
+commit 2c2c4b31640e52a4a78290bdb1593e5c6b3d26ab
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Thu Sep 5 17:45:05 2024 +0200
+
+    wrist input keymaps added
+
+commit 688220a07d10351710f410a3cfd10d9b44ae2290
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Thu Sep 5 07:51:54 2024 +0200
+
+    sketched out, yet incomplete, implementation of streams
+
+commit 31f22dd4fa6238a7f728af8d29da057785607e96
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Wed Sep 4 09:01:50 2024 +0200
+
+    curry speced and implemented
+
+commit d448cdccb2db182cdbb446da76ab71140df4d056
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Wed Sep 4 07:34:06 2024 +0200
+
+    working on advanced lua
+
+commit 13b8e6dc478f86b45c8102d4719f899c78659983
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Sep 3 21:13:56 2024 +0200
+
+    Stubbed nvim_buf_set_lines speced realtive to real behavior
+
+commit a5c6bde5c53efca9321ed3e014bd6e5ac787881e
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Tue Sep 3 19:44:14 2024 +0200
+
+    specing mocked nvim_buf_set_lines
+
+commit ba91eae50dd2213f5c9ebfaccf13b6ecb068bd22
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 21:57:31 2024 +0200
+
+    Fixed bug in line_at
+
+commit 4c813b26942fc02f45405f8e2568df69fcef7b79
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 20:19:09 2024 +0200
+
+    Input keymap definitions speced
+
+commit b12323d2d0388e6e61c55d54d3955c89e0d88b75
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 19:02:11 2024 +0200
+
+    Editing keymap definitions speced
+
+commit 7738740c847cec925c1a38c9c7ade87e45455ba0
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 16:43:28 2024 +0200
+
+    More keymap definition speced (using stubs for vim.cmd)
+
+commit 22bbf64e6ff92ac3464398aaabd9b8ded9d3792e
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 09:29:32 2024 +0200
+
+    Replaced explicit os.extend stub with busted builtin stub
+
+commit 87b07ed6e7d3e3daaa23be383433d92152140572
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Mon Sep 2 09:21:42 2024 +0200
+
+    os stubbed keyboard mapping specs WIP
+
+commit 487d20466f9406cdbd2c33b79aa87a695a7f69eb
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sun Sep 1 18:19:55 2024 +0200
+
+    Context speced
+
+commit 4158d966cf8f1e189f4dd0cb47465ecefb23a104
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sun Sep 1 17:54:34 2024 +0200
+
+    Starting to stub out the specs for context.lua WIP 2
+
+commit 1f6f819e5eeb77ba17293d86463a1db31bfea488
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Aug 31 22:03:41 2024 +0200
+
+    Starting to stub out the specs for context.lua WIP
+
+commit 47f794977a0a31bffb8a45b11006f79139b1a52b
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Aug 31 19:35:28 2024 +0200
+
+    Structure
+    
+    One lua file init.lua requires lua/lamine, everything else is inside
+    lua/
+    
+    Setup of busted ok
+    
+            Next configure coverage (in .busted?)
+            Then develop
+
+commit f7daba12278366193bec19a9baeaf6cb844f0dd3
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Aug 31 19:27:28 2024 +0200
+
+    Clean Slate for busted with stubbed vim
+
+commit 05175b0f0561940c6a9be088f7657f1ba2ea56e7
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Sat Aug 31 18:59:12 2024 +0200
+
+    try-minit
+
+commit c21a4d4b13003f106b1d9c0b426971c61dfa188a
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Aug 30 17:58:37 2024 +0200
+
+    bootstrapped as plugin in basic.lua
+
+commit c677bc71d60ff8729a0bf6b4fda5ea8c8044d21d
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Aug 30 17:53:46 2024 +0200
+
+    setup of lazy.nvim and basic plugins
+
+commit db0695e7ea2351b535fb7135bb59842f802f4632
+Author: RobertDober <robert.dober@gmail.com>
+Date:   Fri Aug 30 17:38:23 2024 +0200
+
+    intial commit
+
+commit 33ddfc9722bd9b733e6e17e56df61eb51d2fa9c2
+Author: Robert Dober <robert.dober@gmail.com>
+Date:   Fri Aug 30 17:31:28 2024 +0200
+
+    Initial commit
