@@ -85,13 +85,20 @@ local block_completions = {
     "^(%s*)(%.)(.*)$",
     C.replace_matches_and_add_lines{replacers={nil, nil, nil}, lines={"."}, offset={1, 999}}, 
   },
+}
 
+local default_completions = {
+  {
+    "^(%s*)(.*)(%s+)do(%s*)$",
+    C.replace_matches_and_add_lines{replacers={nil,  nil, ' do', ''}, lines={"  ", "end" }, offset={1, 999}}, 
+  }
 }
 
 return append(
 at_beginning_completions,
 inline_completions,
-block_completions
+block_completions,
+default_completions
 )
 
 -- SPDX-License-Identifier: AGPL-3.0-or-later
