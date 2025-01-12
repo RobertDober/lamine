@@ -82,6 +82,10 @@ local block_completions = {
     }, 
   },
   {
+    "^(rspec_conf)(%s*)$",
+    C.replace_matches_and_add_lines{replacers={'RSpec.configure do |config|', ''}, lines={'  config.include ', 'end'}, offset={1, 999}}
+  },
+  {
     "^(%s*)(%.)(.*)$",
     C.replace_matches_and_add_lines{replacers={nil, nil, nil}, lines={"."}, offset={1, 999}}, 
   },

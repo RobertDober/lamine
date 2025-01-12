@@ -1,5 +1,6 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
+-- def parse_markdown(_,_), do: {:ok, [], []}$
 
 local ac = require'lamine.autocompletion.completion'
 local fc = ac.find_completion

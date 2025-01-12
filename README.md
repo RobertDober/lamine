@@ -12,7 +12,9 @@ GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007 or later. Please r
 
 ## DEVNOTES
 ### 2025-01-12
-    do completion for ruby
+
+do completion for ruby
+rspec_config completion for ruby
 
 ### 2025-01-10
     Road to v0.1.1
