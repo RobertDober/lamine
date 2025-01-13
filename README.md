@@ -11,6 +11,10 @@ Copyright © 2024 Robert Dober robert.dober@gmail.com
 GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007 or later. Please refer to [LICENSE](LICENSE) for details.
 
 ## DEVNOTES
+### 2025-01-13
+
+commented uneffective :<some paren> keymaps
+
 ### 2025-01-12
 
 do completion for ruby
