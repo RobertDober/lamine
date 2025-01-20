@@ -1,12 +1,13 @@
--- local dbg = require("debugger")
--- dbg.auto_where = 2
+    -- local dbg = require("debugger")
+    -- dbg.auto_where = 2
+    -- $
 
 local ac = require'lamine.autocompletion.completion'
 local fc = ac.find_completion
 
-local reset_evals = require'stub_nvim_evals'.reset_evals
 
 local function context(line)
+  def parse_markdown(_,_), do: {:ok, [], []}$
   return {filetype = nil, line = line, basename='some_file'} 
 end
 
@@ -48,6 +49,7 @@ describe('general completions', function()
       assert.are.same({"prefix " .. retval}, result.lines )
       assert.is_nil(result.offset)
     end)
+
   end)
 end)
 -- SPDX-License-Identifier: AGPL-3.0-or-later

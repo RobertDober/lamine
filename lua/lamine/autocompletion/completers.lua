@@ -74,6 +74,7 @@ local function replace_matches_and_add_lines(params)
   end
   return function(matches, ctxt)
     -- vim.print(matches)
+    -- vim.print(replacers)
     local line = T.combine(matches, replacers, _maybe_replace_with, matches)
     if line then
       line = T.join(line)

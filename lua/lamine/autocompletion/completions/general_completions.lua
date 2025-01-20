@@ -5,6 +5,7 @@ local abort = require'lamine.tools.table'.abort
 local C = require'lamine.autocompletion.completers'
 local map = require'lamine.functional'.map
 local predefined_functions = require'lamine.autocompletion.completions.predefined_functions'
+local S = require'lamine.functions.ho.strings'
 
 local arrows = {
   {'%-%>', '→'},
@@ -33,12 +34,32 @@ for i = 3, 5 do
   table.insert(completions, fold_completion)
 end
 
-local predefined_function_completion = {
-  "^(.*)(%%)(%w+)(%s*)$",
-  C.replace_matches{nil, '',  C.get_function(predefined_functions, 3, abort), ''} 
+local predefined_function_completions = {
+  {
+    "^(.*)(%%)([_%w]+)(%s*)$",
+    C.replace_matches{nil, '',  C.get_function(predefined_functions, 3, abort), ''} 
+  },
+  {
+    "^(.*%s)([%S]+)(%%code)(%s*)$",
+    C.replace_matches{nil, S.surround_with("`", "`", 2), '', ''}
+  },
+  {
+    "^([%S]+)(%%code)(%s*)$",
+    C.replace_matches{S.surround_with("`", "`", 1), '', ''}
+  },
+  {
+    "^(.*%s)([_%w]+)(%%idx)(%s*)$",
+    C.replace_matches({nil, nil, '[]', ''}, {offset={0, -1}, continue={0, 999}})
+  },
+  {
+    "^([_%w]+)(%%idx)(%s*)$",
+    C.replace_matches({nil, '[]', ''}, {offset={0, -1}, continue={0, 999}})
+  },
 }
-table.insert(completions, predefined_function_completion)
 -- vim.print(completions)
-return completions
 
+return append(
+completions,
+predefined_function_completions
+)
 -- SPDX-License-Identifier: AGPL-3.0-or-later
