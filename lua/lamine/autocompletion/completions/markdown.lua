@@ -28,6 +28,14 @@ local onelines = {
     "^(.*)(fn)(%d+)(.*)$",
     C.replace_matches{nil, "[^", C.match_elements(3, "]") , nil},
   },
+  {
+    "^(%S+)(%%%s*)$",
+    C.replace_matches{C.match_elements("`", 1, "`"), ''},
+  },
+  {
+    "^(.*)(%s)(%S+)(%%%s*)$",
+    C.replace_matches{nil, nil, C.match_elements("`", 3, "`"), ''},
+  },
 }
 
 

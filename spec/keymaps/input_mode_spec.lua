@@ -7,14 +7,14 @@ _G.assert = assert
 
 describe('input mode keymappings', function()
   local shortcuts = {
-    ['<Leader><Space>'] = '<Esc>',
-    ['<Leader>='] = '<Esc>A',
-    ['<Leader>$'] = '<Esc>$',
-    ['<Leader>r'] = '<C-r>',
-    ['<Leader>c'] = '<C-c>',
-    ['<Leader>p'] = '<C-p>',
-    ['<Leader>:'] = '\\',
-    ['<Leader>n'] = '~',
+    ['<Tab><Space>'] = '<Esc>',
+    ['<Tab>='] = '<Esc>A',
+    ['<Tab>$'] = '<Esc>$',
+    ['<Tab>r'] = '<C-r>',
+    ['<Tab>c'] = '<C-c>',
+    ['<Tab>p'] = '<C-p>',
+    ['<Tab>:'] = '\\',
+    ['<Tab>n'] = '~',
     ['$<Space>'] = '<Esc>:w!<Cr>',
     ['$-'] =  '<Esc>:wqa<cr>',
     ['$!!'] =  '<Esc>:qa!<cr>',

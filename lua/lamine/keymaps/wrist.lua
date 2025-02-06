@@ -6,6 +6,14 @@ local keys = {
   ['ooo'] = '}',
   ['ppp'] = ']',
   ['zzz'] = '{',
+  ['zz('] = '({',
+  ['zza'] = '{[',
+  ['aa('] = '([',
+  ['aaz'] = '[{',
+  ['oo)'] = '})',
+  ['pp)'] = '])',
+  ['oop'] = '}]',
+  ['ppo'] = ']}',
 }
 for shortcut, mapping in pairs(keys) do
   vim.keymap.set('i', shortcut, mapping, {})

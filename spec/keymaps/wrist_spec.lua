@@ -7,6 +7,14 @@ describe('input mode keymappings for my wrist', function()
     ['aaa'] = '[',
     ['ooo'] = '}',
     ['ppp'] = ']',
+    ['zz('] = '({',
+    ['zza'] = '{[',
+    ['aa('] = '([',
+    ['aaz'] = '[{',
+    ['oo)'] = '})',
+    ['pp)'] = '])',
+    ['oop'] = '}]',
+    ['ppo'] = ']}',
   }
 
   for shortcut, mapping in pairs(shortcuts) do

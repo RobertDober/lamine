@@ -44,6 +44,16 @@ local function set_lines(f, l, data)
   return vim.api.nvim_buf_set_lines(0, f - 1, l, false, data)
 end
 
+local function set_lines_after(data, f)
+  local data = data
+  local f = f or cursor()[1] + 1
+  if type(data) == "string" then
+    data = { data }
+  end
+  local l = f + #data - 1
+  return vim.api.nvim_buf_set_lines(0, f-1, l-1, false, data)
+end
+
 return {
   abspath = abspath,
   basename = basename,
@@ -54,5 +64,6 @@ return {
   relpath = relpath,
   set_cursor = set_cursor,
   set_lines = set_lines,
+  set_lines_after = set_lines_after,
 }
 -- SPDX-License-Identifier: AGPL-3.0-or-later

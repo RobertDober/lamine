@@ -42,6 +42,17 @@ local function combine(tbl1, tbl2, fun, context)
   return t
 end
 
+local function flatten(...)
+  local tables = {...}
+  local result = {}
+  for _, atable in ipairs(tables) do
+    for _, element in ipairs(atable) do
+      table.insert(result, element)
+    end
+  end
+  return result
+end
+
 local function get(subject, idx)
   return subject[_adapt_index(subject, idx)]
 end
@@ -93,6 +104,7 @@ return {
   abort = abort,
   append = append,
   combine = combine,
+  flatten = flatten,
   get = get,
   join = join,
   projection = projection,

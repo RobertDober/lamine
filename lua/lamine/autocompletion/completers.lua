@@ -38,9 +38,9 @@ local function match_elements(...)
   return function(matches)
     -- T.join(F.map(elements, C.curry(_apply, C._, matches)))
     return T.join(F.map(elements, function(element) 
-      -- vim.print{element, matches}
+      -- vim.print{matches=matches, elements=elements}
       local result = _apply(element, matches)
-      -- vim.print(result)
+      -- vim.print{result=result}
       return result
     end))
   end

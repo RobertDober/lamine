@@ -13,7 +13,11 @@ local function replace_termcodes(code, from_part, do_lt, special)
   }
 end
 
+local function create_user_command()
+end
+
 return {
+  create_user_command = create_user_command,
   feedkeys = feedkeys,
   replace_termcodes = replace_termcodes,
 }

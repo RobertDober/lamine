@@ -11,6 +11,7 @@ local ft_completions = {
   elixir = require'lamine.autocompletion.completions.elixir',
   markdown = require'lamine.autocompletion.completions.markdown',
   ruby = require'lamine.autocompletion.completions.ruby',
+  sh = require'lamine.autocompletion.completions.sh',
   typst = require'lamine.autocompletion.completions.typst',
 }
 
@@ -44,9 +45,9 @@ local function complete_with(completion)
     api.set_cursor(context.current_lnb(), 999)
   end
   -- vim.print{before=offset}
-  vim.print{col_before=context.col()} 
+  -- vim.print{col_before=context.col()} 
   offset = ctxt.fn.relative_offset(offset)
-  vim.print{after=offset}
+  -- vim.print{after=offset}
   api.set_cursor(offset)
   set_continuation(continue)
 end

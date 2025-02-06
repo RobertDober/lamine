@@ -37,6 +37,7 @@ vim.print = function(arg)
   return arg
 end
 
+vim.api.nvim_create_user_command = fk.create_user_command
 vim.api.nvim_feedkeys = fk.feedkeys
 vim.api.nvim_replace_termcodes = fk.replace_termcodes
 vim.api.nvim_win_set_cursor = function(win, rowcol)
