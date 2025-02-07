@@ -31,6 +31,7 @@ end
 local function lines(f, l)
   return vim.api.nvim_buf_get_lines(0, f - 1, l, false)
 end
+local get_lines = lines
 
 local function relpath()
   return vim.fn.expand("%")
@@ -54,14 +55,22 @@ local function set_lines_after(data, f)
   return vim.api.nvim_buf_set_lines(0, f-1, l-1, false, data)
 end
 
+local function replace_lines(f, l, fun, ...)
+  local additional_args = {...}
+  local result = fun(get_lines(f, l), unpack(additional_args))
+  return set_lines(f, l, result)
+end
+
 return {
   abspath = abspath,
   basename = basename,
-  dirname = dirname,
   cursor = cursor,
+  dirname = dirname,
   filetype = filetype,
+  get_lines = get_lines,
   lines = lines,
   relpath = relpath,
+  replace_lines = replace_lines,
   set_cursor = set_cursor,
   set_lines = set_lines,
   set_lines_after = set_lines_after,

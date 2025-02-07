@@ -3,9 +3,7 @@
 
 local api = require'lamine.api'
 local flatten = require'lamine.tools.table'.flatten
-local function sort(args)
-  local lines = api.lines(args.line1, args.line2) 
-  local pattern = args.fargs[1]
+local function _sort(lines, pattern)
   local chunks = {}
   local current_chunk = {}
   for _, line in ipairs(lines) do
@@ -23,8 +21,13 @@ local function sort(args)
     end
     return false
   end)
-  local result = flatten(unpack(chunks))
-  api.set_lines(args.line1, args.line2, result)
+  return flatten(unpack(chunks))
+end
+
+local function sort(args)
+  local lines = api.lines(args.line1, args.line2) 
+  local pattern = args.fargs[1]
+  api.replace_lines(args.line1, args.line2, _sort, pattern)
 end
 
 vim.api.nvim_create_user_command('Sort', sort, {nargs='*', range=true})
