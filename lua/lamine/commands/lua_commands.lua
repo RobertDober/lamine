@@ -25,7 +25,6 @@ local function _sort(lines, pattern)
 end
 
 local function sort(args)
-  local lines = api.lines(args.line1, args.line2) 
   local pattern = args.fargs[1]
   api.replace_lines(args.line1, args.line2, _sort, pattern)
 end

@@ -21,14 +21,14 @@ end
 
 local function line_at(lnb)
   if lnb > 0 then
-    return api.lines(lnb, lnb+1)[1]
+    return api.get_lines(lnb, lnb+1)[1]
   end
-  return api.lines(lnb, lnb)[1]
+  return api.get_lines(lnb, lnb)[1]
 end
 
 local function next_lines(offset)
   local offset = offset or 1
-  return api.lines(current_lnb()+offset, current_lnb()+offset)[1]
+  return api.get_lines(current_lnb()+offset, current_lnb()+offset)[1]
 end
 
 local function post_line()

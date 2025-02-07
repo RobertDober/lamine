@@ -28,10 +28,9 @@ local function set_cursor(row, col)
   vim.api.nvim_win_set_cursor(0, {row, col})
 end
 
-local function lines(f, l)
+local function get_lines(f, l)
   return vim.api.nvim_buf_get_lines(0, f - 1, l, false)
 end
-local get_lines = lines
 
 local function relpath()
   return vim.fn.expand("%")
@@ -68,7 +67,6 @@ return {
   dirname = dirname,
   filetype = filetype,
   get_lines = get_lines,
-  lines = lines,
   relpath = relpath,
   replace_lines = replace_lines,
   set_cursor = set_cursor,
