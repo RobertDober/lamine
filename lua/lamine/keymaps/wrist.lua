@@ -2,18 +2,18 @@
 -- dbg.auto_where = 2
 
 local keys = {
-  ['aaa'] = '[',
-  ['ooo'] = '}',
-  ['ppp'] = ']',
-  ['zzz'] = '{',
-  ['zz('] = '({',
-  ['zza'] = '{[',
-  ['aa('] = '([',
-  ['aaz'] = '[{',
-  ['oo)'] = '})',
-  ['pp)'] = '])',
-  ['oop'] = '}]',
-  ['ppo'] = ']}',
+  ['<Tab>('] = '[',
+  ['<Tab>§'] = '{',
+  ['<Tab>)'] = ']',
+  ['<Tab>à'] = '}',
+  -- ['zz('] = '({',
+  -- ['zza'] = '{[',
+  -- ['aa('] = '([',
+  -- ['aaz'] = '[{',
+  -- ['oo)'] = '})',
+  -- ['pp)'] = '])',
+  -- ['oop'] = '}]',
+  -- ['ppo'] = ']}',
 }
 for shortcut, mapping in pairs(keys) do
   vim.keymap.set('i', shortcut, mapping, {})

@@ -1,6 +1,7 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local T = require'lamine.tools.tmux.test'
 vim.os = os
 local function compile_winaddr(winaddr)
   if not winaddr then
@@ -48,9 +49,18 @@ local function switch_to_window(winaddr)
   return os.execute(command)
 end
 
+local function test_command()
+  local command = T.test_command()
+  if command then
+    return run_command_and_switch{command = command.command, window=command.window or ':tests'}
+  end
+  vim.print('ERROR: No test commands found for ft: ' .. vim.o.ft)
+end
+
 return {
   run_command_and_switch = run_command_and_switch,
   switch_to_window = switch_to_window,
   send_and_select_tmux_window = send_and_select_tmux_window,
+  test_command = test_command, 
 }
 -- SPDX-License-Identifier: AGPL-3.0-or-later

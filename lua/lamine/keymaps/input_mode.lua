@@ -12,19 +12,19 @@ local keys = {
   ['<Tab>p'] = '<C-p>',
   ['<Tab>:'] = '\\',
   ['<Tab>n'] = '~',
-  ['$<Space>'] = '<Esc>:w!<Cr>',
-  ['$-'] = '<Esc>:wqa<cr>',
-  ['$!!'] = '<Esc>:qa!<cr>',
+  ['<Tab>w'] = '<Esc>:w!<Cr>',
+  -- ['<Tab>-'] = '<Esc>:wqa<cr>',
+  ['<Tab><Tab>']= '<Tab>',
+['<Tab>!!'] = '<Esc>:qa!<cr>',
   -- ['=('] = '{',
   -- ['=)'] = '}',
   -- [':)'] = ']',
   -- [':('] = ']',
-  [':l'] = '|',
-  ['-a'] = '<Esc>A',
+['<Tab>l'] = '|',
 }
 
 for shortcut, mapping in pairs(keys) do
-  vim.keymap.set('i', shortcut, mapping, {})
+  vim.keymap.set('i', shortcut, mapping, {remap = false})
 end
 
 local function ctrl_p_completion()
@@ -44,10 +44,10 @@ local function insert_empty_line(move_to_insert)
   end
 end
 
-vim.keymap.set('i', '-p', ctrl_p_completion, {})
+-- vim.keymap.set('i', '-p', ctrl_p_completion, {})
 vim.keymap.set('i', '<Tab>o', insert_empty_line(), {})
 vim.keymap.set('n', '<Tab>o', insert_empty_line(true), {})
 
-vim.keymap.set('i', ',,', A.autocomplete, {})
-vim.keymap.set('i', ',;', A.autocontinue, {})
+vim.keymap.set('i', '<Tab>,', A.autocomplete, {})
+-- vim.keymap.set('i', ',;', A.autocontinue, {})
 -- SPDX-License-Identifier: AGPL-3.0-or-later

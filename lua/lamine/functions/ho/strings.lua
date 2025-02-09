@@ -13,6 +13,18 @@ local function match_with(pattern, all)
   end
 end
 
+local function match_subject(subject, all)
+  if all then
+    return function(pattern) 
+      return {string.match(subject, pattern)}
+    end
+  else
+    return function(pattern) 
+      return string.match(subject, pattern)
+    end
+  end
+end
+
 local function prefix_with(prefix)
   return function(subject)
     return prefix .. subject
@@ -20,6 +32,7 @@ local function prefix_with(prefix)
 end
 
 return {
+  match_subject = match_subject,
   match_with = match_with,
   prefix_with = prefix_with,
 }

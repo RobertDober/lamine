@@ -21,6 +21,6 @@ vim.keymap.set('n', ',,', autocomplete, {})
 
 vim.keymap.set('c', '$-', 'wqa<cr>', {})
 vim.keymap.set('c', '$!!', 'qa!<cr>', {})
-vim.keymap.set('i', '$-', '<Esc>:wqa<cr>', {})
-vim.keymap.set('i', '$!!', '<Esc>:qa!<cr>', {})
+-- vim.keymap.set('i', '$-', '<Esc>:wqa<cr>', {})
+-- vim.keymap.set('i', '$!!', '<Esc>:qa!<cr>', {})
 -- SPDX-License-Identifier: AGPL-3.0-or-later
