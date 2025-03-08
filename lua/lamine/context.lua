@@ -116,5 +116,6 @@ local function current_context()
 end
 
 context_functions.current_context = current_context
+context_functions.api = api
 return context_functions
 -- SPDX-License-Identifier: AGPL-3.0-or-later

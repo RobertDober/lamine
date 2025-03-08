@@ -28,6 +28,12 @@ local function set_cursor(row, col)
   vim.api.nvim_win_set_cursor(0, {row, col})
 end
 
+local function set_row_col(table)
+  local row = table.row or cursor()[1]
+  local col = table.col or 999
+  vim.api.nvim_win_set_cursor(0, {row, col})
+end
+
 local function get_lines(f, l)
   return vim.api.nvim_buf_get_lines(0, f - 1, l, false)
 end
@@ -60,6 +66,13 @@ local function replace_lines(f, l, fun, ...)
   return set_lines(f, l, result)
 end
 
+local function lnb_of_mark(mark)
+  return vim.api.nvim_buf_get_mark(0, mark)[1]
+end
+local function selected_range()
+  return {lnb_of_mark("<"), lnb_of_mark(">")}
+end
+
 return {
   abspath = abspath,
   basename = basename,
@@ -67,10 +80,13 @@ return {
   dirname = dirname,
   filetype = filetype,
   get_lines = get_lines,
+  lnb_of_mark = lnb_of_mark,
   relpath = relpath,
   replace_lines = replace_lines,
+  selected_range = selected_range,
   set_cursor = set_cursor,
   set_lines = set_lines,
   set_lines_after = set_lines_after,
+  set_row_col = set_row_col,
 }
 -- SPDX-License-Identifier: AGPL-3.0-or-later

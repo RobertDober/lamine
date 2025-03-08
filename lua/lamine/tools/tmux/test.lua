@@ -10,12 +10,20 @@ local elixir_triggers = {
   '^%s*describe',
 }
 
+local function search_for_test_file(path)
+  if string.match(path, "_test%.exs$") then
+    return path
+  end
+  local new_path = string.gsub(path, 'lib/', 'test/')
+  return string.gsub(new_path, '%.ex$', '_test.exs')
+end
+
 local function elixir_test_command(all)
   if all then
     return {command='mix test'}
   end
   local ctxt = context()
-  local file = ctxt.file_path
+  local file = search_for_test_file(ctxt.file_path)
   local line = ctxt.line
   local suffix = ''
   local triggered = find(elixir_triggers, S.match_subject(line))
@@ -23,7 +31,7 @@ local function elixir_test_command(all)
     suffix = ':' .. tostring(ctxt.lnb)
   end
   return {
-    command = 'mix test ' .. ctxt.file_path .. suffix
+    command = 'mix test ' .. file .. suffix
   }
 end
 
@@ -35,7 +43,7 @@ local function test_command()
   if tc then
     return tc()
   end
-  
+
 end
 
 return {

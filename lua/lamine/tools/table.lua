@@ -21,7 +21,7 @@ local function projection(source, model)
   return t
 end
 
-local function  _adapt_index(tbl, idx)
+local function _adapt_index(tbl, idx)
   if idx >= 0 then
     return idx
   end

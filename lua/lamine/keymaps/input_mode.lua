@@ -4,15 +4,17 @@
 local A = require'lamine.autocompletion'
 
 local keys = {
-  ['<Tab><Space>'] = '<Esc>',
+  ['<Tab>y'] = '<Esc>',
   ['<Tab>='] = '<Esc>A',
+  ['<Tab>j'] = '<Esc>jA',
   ['<Tab>$'] = '<Esc>$',
   ['<Tab>r'] = '<C-r>',
   ['<Tab>c'] = '<C-c>',
   ['<Tab>p'] = '<C-p>',
+  ['<Tab>u'] = '<Esc>uA',
   ['<Tab>:'] = '\\',
   ['<Tab>n'] = '~',
-  ['<Tab>w'] = '<Esc>:w!<Cr>',
+  ['<Tab><Space>'] = '<Esc>:w!<Cr>',
   -- ['<Tab>-'] = '<Esc>:wqa<cr>',
   ['<Tab><Tab>']= '<Tab>',
 ['<Tab>!!'] = '<Esc>:qa!<cr>',

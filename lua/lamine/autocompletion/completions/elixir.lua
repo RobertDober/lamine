@@ -6,6 +6,7 @@ local C = require'lamine.autocompletion.completers'
 local P = require'lamine.autocompletion.patterns'
 
 local do_completion_kwds = {
+  case = 'case',
   def = 'def',
   defp = 'defp',
 }
@@ -58,8 +59,16 @@ local inline_completions = {
     C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
   },
   {
-    "^(%s*)(.*)(&&&)",
-    C.replace_suffix_and_add_lines{lines={}, suffix=" |> ", offset={0, 999}}
+    "^(%s*)(.*)(IO%.inspect)",
+    C.replace_suffix_and_add_lines{lines={}, suffix="IO.inspect(%%{})", offset={0, 3}, continue={0, 999}}
+  },
+  {
+    "^(%s*)(.*)(%|%s*)$",
+    C.replace_suffix_and_add_lines{lines={}, suffix="|> ", offset={0, 999}}
+  },
+  {
+    "^(%s*)(.*)(www)",
+    C.replace_suffix_and_add_lines{lines={}, suffix="~W[]", offset={0, 0}, continue={0, 999}}
   },
   {
     "^(%s*)(.*)(fn)",
@@ -73,13 +82,17 @@ local inline_completions = {
     "^(%s*)(.*)(%sNOK)",
     C.replace_suffix_and_add_lines{lines={}, suffix=" {:error,", offset={0, 999}}
   },
+  {
+    "^(%s*)(.*)(%sdefkwd)",
+    C.replace_suffix_and_add_lines{lines={}, suffix=" \\\\ [])", offset={0, 999}}
+  },
 }
 
 local next_line_completions = {
   {
-    "^(%s*)(.*)(%&%&)(%s*)",
+    "^(%s*)(.*)(%S)(%s+)$",
     C.replace_matches_and_add_lines{
-      replacers={nil, nil, '', ''},
+      replacers={nil, nil, nil, ''},
       lines={"|> "},
       offset={1, 999}
     },
@@ -102,12 +115,21 @@ local next_line_completions = {
   },
 }
 
+-- local match_completions = {
+--   {
+--     "^(%s*)(.*)(%s%%)([wW])(%s*)$",
+--     C.replace_matches{
+--       nil, nil, '', C.match_elements(" [", 4, "] ", {offset={0, -1}})}
+--   },
+-- }
+
 local completions =
   append(
     inline_completions,
     next_line_completions,
     multiline_string_completions,
     do_completions
+    -- match_completions
   )
 
 -- vim.print(completions)

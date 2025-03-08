@@ -7,6 +7,7 @@ vim.keymap.set('n', ';=', "maggVG='azz", {})
 vim.keymap.set('n', '<Esc>', ":set nohlsearch<CR>", {})
 
 vim.keymap.set('n', '=', "A", {})
+vim.keymap.set('n', '<Tab>i', "jA", {})
 
 vim.keymap.set('n', '$l', '<<', {})
 vim.keymap.set('n', '$r', '>>', {})

@@ -5,6 +5,7 @@ local P = require'lamine.autocompletion.patterns'
 
 local simple_replacements = {
   lo = 'local',
+  ret = 'return',
 }
 
 return {
