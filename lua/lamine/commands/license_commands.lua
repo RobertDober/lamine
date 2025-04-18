@@ -1,18 +1,24 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
--- local spdx_license_id_prefix = 'SPDX-License-Identifier: '
--- local function add_spdx_license_identifier(license_id)
---   local license_format = string.format(vim.o.commentstring, spdx_license_id_prefix)
---   local line = context.line_at(-1)
---   -- if string.
---   --     local spdx_license_identifer = string.format(vim.o.commentstring, spdx_license_id_prefix .. license_identifier) 
+local api = require'lamine.api'
+local ft_make_file = require'lamine.commands.ft_make_file'
 
---   --     vim.api.nvim_buf_set_lines(0, -1, -1, false, {spdx_license_identifer})
+local make_file_options = {
+  nargs = '?',
+  complete = ft_make_file.completion_function
+}
 
-  
--- end
+local function make_file(args)
+  local template_data = ft_make_file.ft_function(vim.o.ft, args.fargs[1])
+  api.set_lines(1, 1, template_data.lines) 
+  api.set_cursor(template_data.lnb or 2, template_data.col or 999)
+  vim.api.nvim_feedkeys('A', 'i', false)
+end
 
--- vim.api.nvim_create_user_command('AddAGPLPDXLicenseIdentifier', add_spdx_license_identifier('AGPL-3.0-or-later'), {})
--- vim.api.nvim_create_user_command('AddApacheSPDXLicenseIdentifier', add_spdx_license_identifier('Apache-2.0'), {})
+vim.api.nvim_create_user_command(
+  'MakeFile', 
+  make_file, 
+  make_file_options
+  )
 -- SPDX-License-Identifier: AGPL-3.0-or-later

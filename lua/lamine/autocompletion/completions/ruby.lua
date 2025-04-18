@@ -9,10 +9,17 @@ local continuing_kwds = {
   att = 'attr_reader',
 }
 
+local it_block_triggers = {
+  each = 'each',
+  flat_map = 'flat_map',
+  map = 'map',
+}
+
 local  requires = {
   req = 'require',
   reqrel = 'require_relative',
 }
+
 local starting_keywords = {
   definit = 'def initialize',
   priv = 'private',
@@ -24,6 +31,10 @@ local at_beginning_completions = {
   {
     "^(%w+)(%s*)$",
     C.replace_matches{C.match_against_table(requires), " '"}
+  },
+  {
+    "(%s+)(.*%.)(%w+)(%s+)([_%w]+)(%s*)",
+    C.replace_matches{nil, nil, C.match_against_table(it_block_triggers), ' { ', nil, ' it }'}
   },
   P.word(C.replace_matches{nil, C.match_against_table(starting_keywords), ''}),
   P.word(C.replace_matches{nil, C.match_against_table(continuing_kwds), ' '}),

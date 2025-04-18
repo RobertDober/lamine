@@ -9,6 +9,7 @@ local find_value = require'lamine.functional'.find_value
 local ft_completions = {
   lua = require'lamine.autocompletion.completions.lua',
   elixir = require'lamine.autocompletion.completions.elixir',
+  fennel = require'lamine.autocompletion.completions.fennel',
   markdown = require'lamine.autocompletion.completions.markdown',
   ruby = require'lamine.autocompletion.completions.ruby',
   sh = require'lamine.autocompletion.completions.sh',

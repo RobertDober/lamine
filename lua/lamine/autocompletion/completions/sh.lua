@@ -93,6 +93,14 @@ local P = require'lamine.autocompletion.patterns'
 
 local default_completions = {
   {
+    "^(.*)(%$)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, nil, "{}"
+      },
+      lines={}, offset = {0, 1}, continue={0, 999}}
+  },
+  {
     "^(.*)(%$)([_%w%d]+)(%%)(%s*)$",
     C.replace_matches{nil, '${', nil, '}', ''}  
   },

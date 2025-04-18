@@ -67,6 +67,15 @@ local completions = {
     "^(%s*)(%s*)$",
     C.replace_matches{nil, "#"}
   },
+  {
+    "^(#let%s.*)(%s=%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {nil, " = {"},
+      lines = {'  ', '}'},
+    offset={1, 9},
+    indent= true,
+    }
+  },
 }
 
 local completes_with_cont = {

@@ -55,6 +55,22 @@ local multiline_string_completions = {
 }
 local inline_completions = {
   {
+    "^(%s*)(<<.*)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, nil, ">> -> "
+      },
+      lines={}, offset = {0, 6}, continue={0, 999}}
+  },
+  {
+    "^(.*)(%%)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, nil, "{}"
+      },
+      lines={}, offset = {0, 1}, continue={0, 999}}
+  },
+  {
     "^(%s*)(.*)(@@@)",
     C.replace_suffix_and_add_lines{lines={}, suffix="#{}", offset={0, -1}, continue={0, 999}}
   },

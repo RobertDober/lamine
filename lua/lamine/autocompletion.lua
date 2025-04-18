@@ -7,8 +7,9 @@ local context = require'lamine.context'
 local function autocomplete()
   local ctxt = context.current_context()
   local completion = C.find_completion(ctxt)
+  vim.print(completion)
   if completion then
-    return C.complete_with(completion, ctxt)
+    return C.complete_with(completion)
   end
 end
 
