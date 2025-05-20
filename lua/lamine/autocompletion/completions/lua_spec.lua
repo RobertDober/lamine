@@ -10,6 +10,7 @@ local shorts = {
   {'before', 'before_each'},
   {'setup', 'setup'},
   {'teardown', 'teardown'},
+  {'has_error', 'assert.has_error'},
 }
 
 local completions = map(shorts, function(shrt)

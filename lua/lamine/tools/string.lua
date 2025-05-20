@@ -13,7 +13,10 @@ local function split(inputstr, sep, fun)
   local t={}
   for str in string.gmatch(inputstr, sep) do
     if fun then
-      table.insert(t, fun(str))
+      local value = fun(str)
+      if value then
+        table.insert(t, value)
+      end
     else
       table.insert(t, str)
     end

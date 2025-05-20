@@ -3,8 +3,9 @@
 
 local parser = require'lamine.tools.string'
 
-print(X)
-parser.split(X, "%S+", function(part)
+vim.print{version=1, name="lamine.init_args"}
+local commands={}
+parser.split(vim.env.LAMINE_ARGS, "%S+", function(part)
   print("part: " .. part)
   return 1
 end)

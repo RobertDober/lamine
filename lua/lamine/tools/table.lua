@@ -1,6 +1,11 @@
 -- local dbg = require("debugger")
 -- dbg.auto_where = 2
 
+local function push(t, value)
+  table.insert(t, value)
+  return table
+end
+
 local abort = {'local constant tools.table.abort'}
 local function append(...)
   local tables = {...}
@@ -88,6 +93,10 @@ local function replace_slice(orig, fi, li, new)
   return t
 end
 
+local function shift(t)
+  return table.remove(t, 1)
+end
+
 local function slice(tbl, fi, li)
   if fi < 0 then
     local size = #tbl
@@ -108,7 +117,10 @@ return {
   get = get,
   join = join,
   projection = projection,
+  push = push,
   replace_slice = replace_slice,
+  shift = shift,
   slice = slice,
+
 }
 -- SPDX-License-Identifier: AGPL-3.0-or-later
