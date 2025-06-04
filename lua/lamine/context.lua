@@ -109,6 +109,7 @@ local function current_context()
     pre_line = pre_line(),
     prefix = prefix(),
     relpath = api.relpath(),
+    subtype = api.filetype() .. string.gsub(string.gsub(api.basename(), "%.[^.]*$", ""), '^.*%_', '_'),
     suffix = suffix(),
   }
   ctxt.fn = context_functions

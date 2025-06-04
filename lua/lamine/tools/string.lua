@@ -10,7 +10,7 @@ end
 local function split(inputstr, sep, fun)
   local sep = sep or "%S+"
   
-  local t={}
+    local t = {}
   for str in string.gmatch(inputstr, sep) do
     if fun then
       table.insert(t, fun(str))

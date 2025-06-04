@@ -32,6 +32,12 @@ local at_beginning_completions = {
     "^(%w+)(%s*)$",
     C.replace_matches{C.match_against_table(requires), " '"}
   },
+  -- {
+  --   "^(%s+)(%S*)(%s*)$",
+  --   C.replace_matches_and_add_lines{
+  --   }
+        
+  -- },
   {
     "(%s+)(.*%.)(%w+)(%s+)([_%w]+)(%s*)",
     C.replace_matches{nil, nil, C.match_against_table(it_block_triggers), ' { ', nil, ' it }'}
@@ -66,6 +72,8 @@ local inline_completions = {
 local block_kwds = {
   def = 'def',
   case = 'case',
+  class = 'class',
+  module = 'module',
 }
 
 local block_completions = {

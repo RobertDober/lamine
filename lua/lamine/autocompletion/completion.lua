@@ -83,11 +83,7 @@ local function find_ft_completion(ctxt)
 end
 
 local function find_subtype_completion(ctxt)
-  local subtype = string.gsub(ctxt.basename, "%.[^.]*$", "")
-  subtype = ctxt.filetype .. string.gsub(subtype, '^.*%_', '_')
-  -- vim.print(subtype)
-  -- vim.print(subtype_completions)
-  local subtype_completion = subtype_completions[subtype]
+  local subtype_completion = subtype_completions[ctxt.subtype]
   -- vim.print(subtype_completion)
   if not subtype_completion then
     return

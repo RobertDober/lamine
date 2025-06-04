@@ -4,4 +4,6 @@
 vim.o.number = true
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
+
+require'lamine.ft.ruby.spec'
 -- SPDX-License-Identifier: AGPL-3.0-or-later
