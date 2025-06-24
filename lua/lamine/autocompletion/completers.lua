@@ -92,7 +92,7 @@ local function replace_matches(replacers, params, debug)
   local params = params or {}
   params.replacers = replacers
   if debug then
-    vim.print(params)
+    -- vim.print(params)
   end
   return replace_matches_and_add_lines(params)
 end
