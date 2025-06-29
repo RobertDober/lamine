@@ -31,7 +31,7 @@ return function(ctxt)
 
   local prefix={ "defmodule " .. modnames .. " do" }
 
-  local lines = append(prefix, infix),
+  local lines = append(prefix, infix)
   -- vim.print{lines = lines}
 
   return {
@@ -39,5 +39,4 @@ return function(ctxt)
     lnb = 6, 
   }
 end
--
 -- SPDX-License-Identifier: AGPL-3.0-or-later

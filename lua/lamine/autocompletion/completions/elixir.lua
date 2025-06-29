@@ -63,12 +63,36 @@ local inline_completions = {
       lines={}, offset = {0, 6}, continue={0, 999}}
   },
   {
+    "^(.*)(%%M)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, "%__MODULE__{}", ''
+      },
+      lines={}, offset = {0, 10}, continue={0, 999}}
+  },
+  {
+    "^(.*)(MOD)(%s*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, nil, "__MODULE__"
+      },
+      lines={}, offset = {0, 6}, continue={0, 999}}
+  },
+  {
     "^(.*)(%%)(%s*)$",
     C.replace_matches_and_add_lines{
       replacers = {
         nil, nil, "{}"
       },
       lines={}, offset = {0, 1}, continue={0, 999}}
+  },
+  {
+    "^(.*)(%%)(%w+)(.*)$",
+    C.replace_matches_and_add_lines{
+      replacers = {
+        nil, "%", nil, "{}"
+      },
+      lines={}, offset = {0, -1}, continue={0, 999}}
   },
   {
     "^(%s*)(.*)(@@@)",
