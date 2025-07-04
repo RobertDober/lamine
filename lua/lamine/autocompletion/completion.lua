@@ -5,6 +5,7 @@ local completers = require'lamine.autocompletion.completers'
 local context = require'lamine.context'
 local api = require'lamine.api'
 local find_value = require'lamine.functional'.find_value
+local report = require'lamine.tools.report'
 
 local ft_completions = {
   lua = require'lamine.autocompletion.completions.lua',
@@ -12,6 +13,7 @@ local ft_completions = {
   fennel = require'lamine.autocompletion.completions.fennel',
   markdown = require'lamine.autocompletion.completions.markdown',
   ruby = require'lamine.autocompletion.completions.ruby',
+  rust = require'lamine.autocompletion.completions.rust',
   sh = require'lamine.autocompletion.completions.sh',
   typst = require'lamine.autocompletion.completions.typst',
 }
@@ -33,6 +35,7 @@ local function set_continuation(continue)
 end
 
 local function complete_with(completion)
+  -- report{name= 'complete_with', completion=completion}
   local continue = completion.contiue and error("must not used reserved param continue=, **yet**")
   local range = completion.range or {0, 0} 
   local ctxt = completion.ctxt or context.current_context()
@@ -57,9 +60,9 @@ local function find_match_and_complete(ctxt)
   return function(entry)
     local pattern = entry[1]
     local handler = entry[2]
-    -- vim.print{pattern=pattern, handler=handler}
+    -- report{label='find_match_and_complete 1', pattern=pattern, handler=handler}
     local matches = {string.match(ctxt.line, pattern)}
-    -- vim.print(pattern)
+    report{label='find_match_and_complete 2', matches=matches}
     if matches and #matches > 0 then
       return handler(matches, ctxt)
     end

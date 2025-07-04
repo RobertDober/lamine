@@ -29,7 +29,7 @@ return function(ctxt)
   local modnames = map(dirs, module)
   local name = join(modnames, ".") 
 
-  local prefix={ "defmodule " .. modnames .. " do" }
+  local prefix={ "defmodule " .. name .. " do" }
 
   local lines = append(prefix, infix)
   -- vim.print{lines = lines}

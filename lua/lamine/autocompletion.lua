@@ -3,11 +3,12 @@
 
 local C = require'lamine.autocompletion.completion'
 local context = require'lamine.context'
+local report = require'lamine.tools.report'
 
 local function autocomplete()
   local ctxt = context.current_context()
   local completion = C.find_completion(ctxt)
-  -- vim.print(completion)
+  report{label='autocomplete', completion = completion}   
   if completion then
     return C.complete_with(completion)
   end

@@ -5,6 +5,8 @@ local C = require'lamine.functions.curry'
 local F = require'lamine.functional'
 local S = require'lamine.functions.ho.strings'
 local T = require'lamine.tools.table'
+local context = require'lamine.context'
+local report = require'lamine.tools.report'
 
 
 local function _apply(r, context, match)
@@ -17,7 +19,9 @@ local function _apply(r, context, match)
   if type(r) == "number" then
     return T.get(context, r)
   end
-  return r(context, match)
+  local result = r(context, match)
+  report{label = '_apply', result = result}
+  return result
 end
 
 local function match_against_table(tbl)
@@ -52,6 +56,7 @@ end
 
 local function _eval_lines(lines, matches, do_not_indent)
   -- local lines = F.map(lines, function(line) return vim.print(_apply(line, matches)) end)
+  --
   local lines = F.map(lines, function(line) return _apply(line, matches) end)
   -- vim.print{lines=lines}
   local prefix = matches[1]
@@ -61,6 +66,13 @@ local function _eval_lines(lines, matches, do_not_indent)
     end
   end
   return lines
+end
+
+local function indent(n)
+  local n = n or 1
+  return function()
+    return context.indent(n)
+  end
 end
 
 local function replace_matches_and_add_lines(params)
@@ -124,6 +136,7 @@ end
 
 return {
   get_function = get_function,
+  indent = indent,
   match_against_table = match_against_table,
   match_elements = match_elements,
   replace_matches = replace_matches,

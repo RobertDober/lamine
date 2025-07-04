@@ -19,6 +19,12 @@ local function current_lnb()
   return api.cursor()[1]
 end
 
+local function indent(n)
+  local n = n or 1
+  local w = vim.o.shiftwidth
+  return string.rep(" ", n * w)
+end
+
 local function line_at(lnb)
   if lnb > 0 then
     return api.get_lines(lnb, lnb+1)[1]
@@ -83,6 +89,7 @@ local context_functions = {
   current_char = current_char,
   current_line = current_line,
   current_lnb = current_lnb,
+  indent = indent,
   line_at = line_at,
   next_lines = next_lines,
   post_line = post_line,
